@@ -66,6 +66,27 @@ body{
     border-color: #fff;
 }
 
+.container .registrarBT{
+    background-color: #512da8;
+    background: linear-gradient(to right, #267036, #55a544);
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px; 
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.container .registrarBT:hover{
+    background-color: #fff;
+    border: 3px solid #512da8;
+    transition: all 0.3s ease-in-out;
+}
+
 .formulario-container{
     background-color: #fff;
     display: flex;

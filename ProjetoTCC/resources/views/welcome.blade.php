@@ -14,20 +14,21 @@
             <form action="/events" method="POST">
                 @csrf
                 <h1>Crie sua conta</h1>
-                <input type="text" placeholder="Nome" id="nome" name="nome">
-                <input type="email" placeholder="Email" id="email" name="email">
-                <input type="password" placeholder="Senha" id="senha" name="senha">
-                <input type="password" placeholder="Confirme sua senha" id="confirmSenha" name="confirmSenha">
-                <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj">
-                <input type="submit" value="Registrar" id="registrar">
+                <input type="text" placeholder="Nome" id="nome" name="nome" required>
+                <input type="email" placeholder="Email" id="email" name="email" required>
+                <input type="password" placeholder="Senha" id="senha" name="senha" required>
+                <input type="password" placeholder="Confirme sua senha" id="confirmSenha" name="confirmSenha" required>
+                <span id="errorMessage" class="text-danger" style="display: none;">As senhas devem ser iguais!</span>
+                <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj" required>
+                <input type="submit" value="Registrar" id="registrar" class="registrarBT">
                 
             </form>
         </div>
         <div class="formulario-container logar">
             <form>
                 <h1>Entre com a sua conta</h1>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
                 <a href="#">Esqueceu a senha?</a>
                 <button style="margin-left: 10px;">Entrar</button>
             </form>
