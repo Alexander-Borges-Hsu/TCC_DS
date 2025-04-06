@@ -11,24 +11,30 @@
     <body>
     <div class="container" id="container">
         <div class="formulario-container registro">
-            <form action="/events" method="POST">
+            <form action="/events" method="POST" id="form-cadastro">
                 @csrf
                 <h1>Crie sua conta</h1>
                 <input type="text" placeholder="Nome" id="nome" name="nome" required>
                 <input type="email" placeholder="Email" id="email" name="email" required>
-                <input type="password" placeholder="Senha" id="senha" name="senha" required>
+                <span id="erro-email" class="erro"></span>
+                <input type="password" placeholder="senha" id="password" name="password" required>
+                <span class="erro" id="erro-password"></span>
                 <input type="password" placeholder="Confirme sua senha" id="confirmSenha" name="confirmSenha" required>
                 <span id="errorMessage" class="text-danger" style="display: none;">As senhas devem ser iguais!</span>
-                <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj" required>
-                <input type="submit" value="Registrar" id="registrar" class="registrarBT">
-                
+                <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj" required minlength="18" maxlength="18">
+                <span id="erro-cnpj" class="erro"></span>
+                <button value="Registrar" id="registrar" class="registrarBT">Registrar</button>               
             </form>
+            {{-- Area teste do form --}}
+            
+
+            {{-- Fim da area teste --}}
         </div>
         <div class="formulario-container logar">
             <form>
                 <h1>Entre com a sua conta</h1>
                 <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Senha" required>
+                <input type="password" placeholder="password" required>
                 <a href="#">Esqueceu a senha?</a>
                 <button style="margin-left: 10px;">Entrar</button>
             </form>

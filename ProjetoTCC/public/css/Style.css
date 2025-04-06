@@ -216,3 +216,17 @@ body{
 .container.active .painel-direito{
     transform: translateX(200%);
 }
+
+
+.erro {
+    color: red;
+    font-size: 0.9em;
+}
+
+input + .erro {
+    display: block;
+    color: red;
+    font-size: 0.7rem;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
