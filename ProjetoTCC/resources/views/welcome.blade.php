@@ -25,16 +25,15 @@
                 <span id="erro-cnpj" class="erro"></span>
                 <button value="Registrar" id="registrar" class="registrarBT">Registrar</button>               
             </form>
-            {{-- Area teste do form --}}
-            
-
-            {{-- Fim da area teste --}}
         </div>
         <div class="formulario-container logar">
-            <form>
+            <form action="" method="POST" id="form-login">
+                @csrf
                 <h1>Entre com a sua conta</h1>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="password" required>
+                <input type="email" placeholder="Email" name="email" required>
+                <span class="erro" id="erro-Log-email"></span>
+                <input type="password" placeholder="senha" name="password" required>
+                <span class="erro" id="erro-Log-password"></span>
                 <a href="#">Esqueceu a senha?</a>
                 <button style="margin-left: 10px;">Entrar</button>
             </form>

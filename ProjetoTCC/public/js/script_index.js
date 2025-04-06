@@ -113,6 +113,7 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
         if (response.ok) {
             const result = await response.json();
             alert(result.message); // ou redireciona
+            window.location.href = '/'; // Redireciona para a página de login
             form.reset();
         } else if (response.status === 422) {
             const result = await response.json();
@@ -128,5 +129,48 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
         console.error('Erro:', error);
         alert('Erro de conexão.');
         console.log(error);
+    }
+});
+
+// Validando o formulário de login
+document.getElementById('form-login').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    document.querySelectorAll('.erro').forEach(el => el.textContent = '');
+
+    const form = e.target;
+    const data = new FormData(form);
+    const token = document.querySelector('input[name="_token"]').value;
+
+    try {
+        const response = await fetch("/login", {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': token,
+                'Accept': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert(result.message);
+            window.location.href = '/dashboard'; // MUDAR DESTINO AO LOGAR
+        } else if (response.status === 422) {
+            const result = await response.json();
+            const errors = result.errors;
+            for (let campo in errors) {
+                const erroEl = document.getElementById('erro-Log-' + campo);
+                if (erroEl) {
+                    erroEl.textContent = errors[campo][0];
+                }
+            }
+        } else {
+            alert('Erro inesperado. Tente novamente.');
+        }
+
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro de conexão.');
     }
 });

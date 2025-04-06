@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\Usuario;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,19 +13,6 @@ class EventController extends Controller
     public function index(){
         return view('welcome');
     }
-
-    // public function store(Request $request){
-
-    //     $usuario = new Usuario();
-    //     $usuario->nome = $request->nome;
-    //     $usuario->email = $request->email;
-    //     $senhaHash = password_hash($request->senha, PASSWORD_DEFAULT);
-    //     $usuario->password = $senhaHash;
-    //     $usuario->cnpj = $request->cnpj;
-    //     $usuario->save();
-
-    //     return redirect('/');
-    // }
 
     public function store(Request $request){
 
@@ -59,5 +47,25 @@ class EventController extends Controller
         return response()->json(['message' => 'Cadastro realizado com sucesso!']);
     }
 
+    public function login(Request $request){
+        $credenciais = $request->validate([
+            'email' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credenciais)) {
+            $request->session()->regenerate();
+
+            return response()->json([
+                'message' => 'Login realizado com sucesso!'
+            ]);
+        }
+
+        return response()->json([
+            'errors' => [
+                'password' => ['Email ou senha incorretos.']
+            ]
+        ], 422);
+    }
     
 }
