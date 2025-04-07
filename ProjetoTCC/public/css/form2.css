@@ -54,10 +54,6 @@ nav ul li a {
     border-radius: 50%;
 }
 
-.busque{
-  color: #28a745;
-}
-
 nav ul li a {
   font-size: 18px; 
   font-weight: bold;
@@ -73,10 +69,10 @@ nav ul li a {
 }
 
 .noticia-img {
-    width: 100%;  
-    max-height: 150px;  
-    object-fit: cover; 
-    border-radius: 8px; 
+    width: 100%;
+    height: 150px; /* Altura fixa para todas as imagens */
+    object-fit: cover; /* Mantém a proporção e corta o excesso */
+    border-radius: 8px;
 }
 
 .container {
@@ -86,23 +82,50 @@ nav ul li a {
   flex-wrap: wrap;
 }
 
-.card, .card2, .card3 {
-  background-color: #46be62 !important;
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-  width: 30%;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin: 50px 0;
-  padding: 20px; 
-  box-sizing: border-box; 
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+    width: 30%;
+    min-height: 400px; /* Defina uma altura mínima */
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
 
 .titulo{
   margin-top: 20px;
   margin-left: 25%;
   font-weight: bold;
+}
+
+a {
+    color: black !important; /* Define a cor do link como preto */
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+}
+
+a p {
+    color: black; /* Garante que o <p> dentro do <a> também fique preto */
+}
+
+a, a:visited, a:hover, a:active {
+    color: black;
+    text-decoration: none;
+}
+
+.fonte{
+    margin-top: 10px;
+    margin-right: 200px;
+}
+
+.busque{
+    color: #28a745 !important;
 }
