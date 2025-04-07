@@ -154,8 +154,7 @@ document.getElementById('form-login').addEventListener('submit', async function(
 
         if (response.ok) {
             const result = await response.json();
-            alert(result.message);
-            window.location.href = '/dashboard'; // MUDAR DESTINO AO LOGAR
+            window.location.href = '/navegar/telaInicial'; // MUDAR DESTINO AO LOGAR
         } else if (response.status === 422) {
             const result = await response.json();
             const errors = result.errors;

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.header-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 30px;
+    border-bottom: 3px solid #4CAF50;
+    margin-right: 16.5px;
+}
+
+h1 .verde { 
+    color: #4CAF50; font-weight: bold; 
+}
+
+h1 .calc { 
+    color: black; font-weight: bold; 
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.busque{
+  color: #28a745;
+}
+
+nav ul li a {
+  font-size: 18px; 
+  font-weight: bold;
+  color: black; 
+  text-transform: uppercase; 
+  padding: 10px 15px; 
+  transition: 0.3s; 
+}
+
+.categoria-noticias {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.noticia-img {
+    width: 100%;  
+    max-height: 150px;  
+    object-fit: cover; 
+    border-radius: 8px; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.card, .card2, .card3 {
+  background-color: #46be62 !important;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  width: 30%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0;
+  padding: 20px; 
+  box-sizing: border-box; 
+}
+
+.titulo{
+  margin-top: 20px;
+  margin-left: 25%;
+  font-weight: bold;
+}

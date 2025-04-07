@@ -66,27 +66,6 @@ body{
     border-color: #fff;
 }
 
-.container .registrarBT{
-    background-color: #512da8;
-    background: linear-gradient(to right, #267036, #55a544);
-    color: #fff;
-    font-size: 12px;
-    padding: 10px 45px; 
-    border: 1px solid transparent;
-    border-radius: 8px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.container .registrarBT:hover{
-    background-color: #fff;
-    border: 3px solid #512da8;
-    transition: all 0.3s ease-in-out;
-}
-
 .formulario-container{
     background-color: #fff;
     display: flex;
@@ -138,6 +117,32 @@ body{
     opacity: 1;
     z-index: 5;
     animation: move 0.6s;
+}
+
+.container .botao-input {
+    background-color: #512da8;
+    background: linear-gradient(to right, #267036, #55a544);
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px; 
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.container input[type="submit"].botao-input {
+    appearance: none; 
+}
+
+.container .botao-input.hidden {
+    background-color: transparent;
+    border-color: #fff;
 }
 
 @Keyframes move{
@@ -217,16 +222,10 @@ body{
     transform: translateX(200%);
 }
 
-
 .erro {
     color: red;
     font-size: 0.9em;
-}
-
-input + .erro {
     display: block;
-    color: red;
-    font-size: 0.7rem;
-    margin-top: 4px;
+    margin-top: -8px;
     margin-bottom: 10px;
 }
