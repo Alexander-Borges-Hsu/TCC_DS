@@ -1,0 +1,211 @@
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+a,
+a:active,
+a:focus {
+    color: #6f6f6f;
+    text-decoration: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: .2s;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+footer {
+    background-image: url('/imagens/backgroundfooter.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+    color: white;
+    z-index: 1;
+    min-height: 150px;
+}
+
+.footer .widget1 p {
+    text-align: justify;
+    font-size: 16px;
+    color: rgba(255, 255, 255, .6);
+    margin-top: 26px;
+}
+
+.footer .widget1 p:hover {
+    color: rgb(62, 112, 57);
+}
+
+.footer .socialLinks {
+    margin-top: 20px;
+}
+
+.socialLinks ul li {
+    display: inline-block;
+}
+
+.socialLinks ul li a i {
+    display: block;
+    margin: 0 2px;
+    width: 35px;
+    height: 35px;
+    background: #fafafa;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 5px;
+    line-height: 35px;
+    transition: all 0.3s ease-in-out;
+}
+
+.socialLinks ul li a .fa-instagram {
+    color: #E1306C;
+}
+
+.socialLinks ul li a .fa-facebook-f {
+    color: #4267B2;
+}
+
+.socialLinks ul li a .fa-twitter {
+    color: #1DA1F2;
+}
+
+.socialLinks ul li a .fa-github {
+    color: #000000;
+}
+
+.socialLinks ul li a:hover i {
+    color: #fff;
+}
+
+.socialLinks ul li a:hover .fa-instagram {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.socialLinks ul li a:hover .fa-facebook-f {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.socialLinks ul li a:hover .fa-twitter {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.socialLinks ul li a:hover .fa-github {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+footer .logo {
+    max-width: 180px;
+}
+
+.footer h5 {
+    font-weight: 600;
+    color: #fff;
+    font-size: 18px;
+}
+
+.footer .widget3 ul li a,
+.footer .widget4 ul li a {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .6);
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.footer .widget3 ul li a:hover,
+.footer .widget4 ul li a:hover {
+    color: #ffb606;
+}
+
+.footer .widget3 h5,
+.footer .widget4 h5 {
+    margin-bottom: 18px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 18px;
+}
+
+.copyRightArea {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 0;
+    text-align: center;
+}
+
+.copyRightArea p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.copyRightArea p a {
+    color: #ffb606;
+}
+
+.copyRightArea p a:hover {
+    color: #fff;
+}
+
+footer {
+    min-height: 150px;
+}
+
+.spanfooter {
+    font-size: 50px;
+}
+
+.widget3,
+.widget4 {
+    margin-left: 0;
+    margin-top: 20px;
+}
+
+.widget3 ul li,
+.widget4 ul li {
+    padding-bottom: 10px;
+}
+
+footer .widget1,
+footer .widget3,
+footer .widget4 {
+    margin-bottom: 30px;
+}
+
+.row {
+    display: flex;
+    gap: 30px; 
+}
+
+.widget3{
+    margin-left:90px;
+    margin-top: 40px;  
+    margin-bottom: 40px; 
+}
+.widget4{
+    margin-top: 40px;  
+    margin-bottom: 40px; 
+}
+
+.col-sm-6.col-lg-3:nth-child(2) {
+    margin-right: 30px; 
+}
+
+.col-sm-6.col-lg-3:nth-child(3) {
+    margin-left: 30px;
+    /* Aumente esse valor para mais espaço entre as colunas */
+}
+
+@media (max-width: 767px) {
+    .widget3 {
+        margin-left: 0px;
+    }
+
+    .widget4 {
+        margin-left: 0px;
+    }
+}
