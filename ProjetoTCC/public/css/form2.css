@@ -92,7 +92,7 @@ nav ul li a {
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
     width: 30%;
-    min-height: 400px; /* Defina uma altura mínima */
+    min-height: 400px; 
     padding: 20px;
     box-sizing: border-box;
     margin-top: 20px;
