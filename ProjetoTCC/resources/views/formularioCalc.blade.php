@@ -75,7 +75,7 @@
         </div>
         <br>
         <label>Quilometragem média mensal de cada tipo</label>
-        <input type="number" placeholder="Quilometragem mensal">
+        <input type="text" placeholder="Quilometragem mensal">
         <br>
         <h3 class="subtitulo">Máquinas e Equipamentos</h3>
         <label>Quantas máquinas a empresa usa regularmente? (Descrição por tipo)</label>
@@ -94,42 +94,94 @@
             <label for="gas">Gás</label>
         </div>
         <br>
-        <label>A empresa possui certificações ambientais?</label>
+        
+        <label>Tempo médio de funcionamento por mês (em horas)</label>
+        <input type="number" placeholder="Tempo de funcionamento em horas">
+        <br>
+        <br>
+        <label>Consumo médio por hora (litros ou kWh)</label>
+        <input type="text" placeholder="Consumo médio por hora">
+        <br>
+        <br>
+        <label>Quantidade de papel A4 utilizado por mês (resmas ou folhas)</label>
+        <input type="text" placeholder="Tempo de funcionamento em horas">
+        <br>
+        <br>
+        <h2 class="subtitulo">Materiais de Escritório e Suprimentos</h2>
+        <label>Quantidade de papel higiênico consumido por mês (rolo ou kg)</label>
+        <input type="text" placeholder="Quantidade papel higiênico">
+        <br>
+        <br>
+        <label>Uso de copos descartáveis (número por mês)</label>
+        <input type="number" placeholder="Quantidade copos descartáveis">
+        <br>
+        <br>
+        <label>Uso de copos descartáveis usados com frequência (especificar e quantificar)</label>
+        <input type="text" placeholder="Tempo de funcionamento em horas">
+        <br>
+        <br>
+        <h2 class="subtitulo">Resíduos Sólidos</h2>
+        <label>Quantidade de lixo comum gerado por mês (kg ou sacos de 100L)</label>
+        <input type="text" placeholder="Quantidade de lixo comum">
+        <br>
+        <br>
+        <label>Quantidade de lixo reciclável separado (kg por mês)</label>
+        <input type="number" placeholder="Quantidade lixo reciclável">
+        <br>
+        <br>
+        <label>Há compostagem de resíduos orgânicos?</label>
         <div class="buttons">
-            <input type="radio" id="cert-sim" name="certificacoes" value="sim">
-            <label for="cert-sim">Sim</label>
-            <input type="radio" id="cert-nao" name="certificacoes" value="nao">
-            <label for="cert-nao">Não</label>
+            <input type="radio" id="compostagem-sim" name="compostagem" value="sim">
+            <label for="compostagem-sim">Sim</label>
+            <input type="radio" id="compostagem-nao" name="compostagem" value="nao">
+            <label for="compostagem-nao">Não</label>
         </div>
+        <br>
+        <h2 class="subtitulo">Número de Funcionários</h2>
+        <label>Quantidade de funcionários fixos</label>
+        <input type="number" placeholder="Quantidade de funcionários fixos">
+        <br>
+        <br>
+        <label>Quantos se deslocam diariamente até a empresa?</label>
+        <input type="number" placeholder="Quantidade de funcionários que se deslocam até a empresa">
+        <br>
+        <br>
+        <label>Meios de transporte mais usados</label>
+        <div class="buttons">
+            <input type="checkbox" id="carro" name="fontes[]" value="Carro">
+            <label for="carro">Carro</label>
 
-        <h3 class="subtitulo">Gestão de Sustentabilidade</h3>
-        <label>A empresa já implementou ações para redução de carbono?</label>
-        <div class="buttons">
-            <input type="radio" id="reduz-sim" name="reducao_carbono" value="sim">
-            <label for="reduz-sim">Sim</label>
-            <input type="radio" id="reduz-nao" name="reducao_carbono" value="nao">
-            <label for="reduz-nao">Não</label>
-        </div>
+            <input type="checkbox" id="onibus" name="fontes[]" value="Onibus">
+            <label for="onibus">Onibus</label>
 
-        <label>A empresa realiza o cálculo da emissão de carbono?</label>
-        <div class="buttons">
-            <input type="radio" id="pegada-sim" name="pegada_carbono" value="sim">
-            <label for="pegada-sim">Sim</label>
-            <input type="radio" id="pegada-nao" name="pegada_carbono" value="nao">
-            <label for="pegada-nao">Não</label>
-        </div>
+            <input type="checkbox" id="bicicleta" name="fontes[]" value="Bicicleta">
+            <label for="bicicleta">Bicicleta</label>
 
-        <label>Tipo de matriz energética principal?</label>
-        <div class="buttons">
-            <input type="radio" id="eletrica" name="matriz_energetica" value="Eletrica">
-            <label for="eletrica">Elétrica</label>
-            <input type="radio" id="solar" name="matriz_energetica" value="Solar">
-            <label for="solar">Solar</label>
-            <input type="radio" id="eolica" name="matriz_energetica" value="Eólica">
-            <label for="eolica">Eólica</label>
-            <input type="radio" id="combustivel_fossil" name="matriz_energetica" value="Combustivel_Fossil">
-            <label for="combustivel_fossil">Combustível Fóssil</label>
+            <input type="checkbox" id="pé" name="fontes[]" value="A pé">
+            <label for="pé">Vai a pé</label>
         </div>
+        <br>
+        <h2 class="subtitulo">T.I e Infraestrutura</h2>
+        <label>Quantidade de computadores e servidores ativos</label>
+        <input type="number" placeholder="Quantidade de computadores e servidores ativos">
+        <br>
+        <br>
+        <label>Horas de uso por dia</label>
+        <input type="number" placeholder="Horas de uso por dia">
+        <br>
+        <br>
+        <label>Uso de servidores em nuvem?</label>
+        <div class="buttons">
+            <input type="radio" id="servidores-sim" name="servidores" value="sim">
+            <label for="servidores-sim">Sim</label>
+            <input type="radio" id="servidores-nao" name="servidores" value="nao">
+            <label for="servidores-nao">Não</label>
+        </div>
+        <br>
+        <label>Nome do provedor</label>
+        <input type="text" placeholder="Nome do provedor">
+        <br>
+        <br>
         <br>
         <input type="submit" value="Registrar" id="registrar" class="botao-input">
     </form>
