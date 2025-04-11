@@ -59,8 +59,11 @@ class EventController extends Controller
         if (Auth::attempt($credenciais)) {
             $request->session()->regenerate();
 
+            $usuario = Auth::user();
+
             return response()->json([
-                'message' => 'Login realizado com sucesso!'
+                'nome' => $usuario->nome,
+                'email' => $usuario->email
             ]);
         }
 

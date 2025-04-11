@@ -5,6 +5,7 @@
     <h1>Bem-vindo à <span>VerdeCalc</span></h1>
 </header>
 <main>
+<!-- <h1>Bem-vindo, {{ Auth::user()->nome }}</h1> -->
     <div class="descricao">
         <p>
             Bem-vindo à VerdeCalc! Experimente nossa Calculadora de Carbono, uma ferramenta que estima as emissões de
