@@ -33,6 +33,7 @@ header h1 {
   text-transform: uppercase;
   line-height: 1.2;
   margin: 0;
+  margin-top: 55px;
 }
 
 header span {
