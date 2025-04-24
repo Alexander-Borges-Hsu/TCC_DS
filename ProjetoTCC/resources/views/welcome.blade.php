@@ -23,7 +23,10 @@
                 <span id="errorMessage" class="text-danger" style="display: none;">As senhas devem ser iguais!</span>
                 <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj" required minlength="18" maxlength="18">
                 <span id="erro-cnpj" class="erro"></span>
-                <button value="Registrar" id="registrar" class="registrarBT">Registrar</button>               
+                <button value="Registrar" id="registrar" class="registrarBT">Registrar</button>
+                <input type="button" value="GERAR CNPJ"  onclick="alert('Para gerar CNPJ falso, acesse: https://www.4devs.com.br/gerador_de_cnpj')" 
+                class="btn-cnpj" 
+                />              
             </form>
         </div>
         <div class="formulario-container logar">
