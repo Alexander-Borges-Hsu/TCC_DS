@@ -1,76 +1,128 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VerdeCalc</title>
-    <link rel="icon" href="/imagens/imagem.png">
-    <link rel="stylesheet" href="/css/editarPerfil.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container light-style flex-grow-1 container-p-y">
-        <h4 class="font-weight-bold py-3 mb-4">Configurações do perfil</h4>
-        <div class="card overflow-hidden">
-            <div class="row no-gutters row-bordered row-border-light">
-                <div class="col-md-3 pt-0">
-                    <div class="list-group list-group-flush account-settings-links">
-                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Geral</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Alterar senha</a>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="tab-content">
-                        <div class="tab-pane fade active show" id="account-general">
-                            <div class="card-body media align-items-center">
-                                <img src="/imagens/perfil.jpg" alt class="d-block ui-w-80">
-                                <div class="media-body ml-4">
-                                    <label class="btn btn-outline-primary">Enviar nova foto
-                                        <input type="file" class="account-settings-fileinput">
-                                    </label> &nbsp;
-                                    <button type="button" class="btn btn-default md-btn-flat">Redefinir</button>
-                                    <div class="text-light small mt-1">Permitido JPG, GIF ou PNG. Tamanho máximo de 800K</div>
-                                </div>
-                            </div>
-                            <hr class="border-light m-0">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label class="form-label">Nome</label>
-                                    <input type="text" class="form-control" value="Nome_Usuário">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Empresa</label>
-                                    <input type="text" class="form-control" value="Empresa_Usuário">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="account-change-password">
-                            <div class="card-body pb-2">
-                                <div class="form-group">
-                                    <label class="form-label">Senha atual</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Nova senha</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Repetir nova senha</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        
-        <div class="text-right mt-3">
-            <button type="button" class="btn btn-primary">Salvar alterações</button>&nbsp;
-            <button type="button" class="btn btn-default">Cancelar</button>
-        </div>
+@extends('layouts.mainForms')
+@section('content')
+
+@extends('layouts.mainForms')
+@section('content')
+
+<div class="container_editar">
+  <h2>Editar Perfil</h2>
+  <form id="profileForm">
+    <label for="profilePic">Foto de Perfil:</label>
+    <input type="file" id="profilePic" accept="image/*">
+
+    <div class="avatar-container">
+      <img id="preview" src="" alt="Prévia da imagem">
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-    </script>
-    
-</body>
-</html>
+
+    <label for="userName">Nome do Usuário:</label>
+    <input type="text" id="userName" required>
+
+    <label for="companyName">Nome da Empresa:</label>
+    <input type="text" id="companyName" required>
+
+    <div class="section">
+      <h3>Alterar Senha</h3>
+
+      <label for="currentPassword">Senha Atual:</label>
+      <input type="password" id="currentPassword" required>
+
+      <label for="newPassword">Nova Senha:</label>
+      <input type="password" id="newPassword" required>
+
+      <label for="confirmPassword">Repetir Nova Senha:</label>
+      <input type="password" id="confirmPassword" required>
+
+      <div id="passwordError" class="error"></div>
+    </div>
+
+    <button type="submit" class="btn-save">Salvar Alterações</button>
+  </form>
+</div>
+
+<script>
+  const senhaAtualCadastrada = "senha123";
+
+  document.getElementById("profileForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const current = document.getElementById("currentPassword").value;
+    const nova = document.getElementById("newPassword").value;
+    const repetir = document.getElementById("confirmPassword").value;
+    const errorDiv = document.getElementById("passwordError");
+
+    errorDiv.textContent = "";
+
+    if (nova.length < 6) {
+      errorDiv.textContent = "A nova senha deve ter no mínimo 6 caracteres.";
+      return;
+    }
+
+    if (nova === current) {
+      errorDiv.textContent = "A nova senha não pode ser igual à senha atual.";
+      return;
+    }
+
+    if (current !== senhaAtualCadastrada) {
+      errorDiv.textContent = "A senha atual está incorreta.";
+      return;
+    }
+
+    if (nova !== repetir) {
+      errorDiv.textContent = "As novas senhas não coincidem.";
+      return;
+    }
+
+    alert("Perfil atualizado com sucesso!");
+  });
+
+  const fileInput = document.getElementById("profilePic");
+  const previewImg = document.getElementById("preview");
+
+  fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (!file) return;
+
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+    if (!validTypes.includes(file.type)) {
+      alert("Apenas arquivos de imagem são permitidos (.jpg, .jpeg, .png, .webp).");
+      this.value = ""; 
+      return;
+    }
+
+    const maxSizeMB = 2;
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      alert("A imagem deve ter no máximo 2MB.");
+      this.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = new Image();
+      img.onload = function () {
+        if (img.width < 200 || img.height < 200) {
+          alert("A imagem deve ter no mínimo 200x200 pixels.");
+          fileInput.value = "";
+          previewImg.style.display = "none";
+          return;
+        }
+
+        const aspectRatio = img.width / img.height;
+        if (aspectRatio < 0.8 || aspectRatio > 1.25) {
+          alert("A imagem deve ser menor para ser usada como foto de perfil.");
+          fileInput.value = "";
+          previewImg.style.display = "none";
+          return;
+        }
+
+        previewImg.src = e.target.result;
+        previewImg.style.display = "block";
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+</script>
+
+@endsection

@@ -1,7 +1,7 @@
 @extends('layouts.mainForms')
 @section('content')
 <section class="form-container">
-    <h2 class="titulo">Olá empreendedor(a), antes de começarmos, insira algumas informações empresariais.</h2>
+    <h2 class="titulo">Olá, antes de começarmos, insira algumas informações empresariais.</h2>
     <form>
         <label>CNPJ da empresa</label>
         <input type="text" placeholder="CNPJ">

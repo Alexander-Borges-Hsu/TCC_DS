@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="/css/formCalc.css">
     <link rel="stylesheet" href="/css/form2.css">
+    <link rel="stylesheet" href="/css/editarPerfil.css">
     <link rel="stylesheet" href="/css/styleFooter.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
