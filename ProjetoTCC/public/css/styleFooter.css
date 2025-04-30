@@ -27,7 +27,7 @@ footer {
     background-size: cover;
     background-position: center;
     padding: 50px 0;
-    color: white;
+    color: white !important;
     z-index: 1;
     min-height: 150px;
 }
@@ -113,7 +113,7 @@ footer .logo {
 .footer .widget3 ul li a,
 .footer .widget4 ul li a {
     font-size: 14px;
-    color: rgba(255, 255, 255, .6);
+    color: #fff !important;
     text-transform: capitalize;
     margin-bottom: 10px;
     display: block;
@@ -153,6 +153,7 @@ footer .logo {
 
 footer {
     min-height: 150px;
+    color: #fff;
 }
 
 .spanfooter {
@@ -168,6 +169,7 @@ footer {
 .widget3 ul li,
 .widget4 ul li {
     padding-bottom: 10px;
+    
 }
 
 footer .widget1,
@@ -197,7 +199,10 @@ footer .widget4 {
 
 .col-sm-6.col-lg-3:nth-child(3) {
     margin-left: 30px;
-    /* Aumente esse valor para mais espaço entre as colunas */
+}
+
+.a{
+    color: #fff !important;
 }
 
 @media (max-width: 767px) {

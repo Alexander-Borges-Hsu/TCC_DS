@@ -1,9 +1,6 @@
 @extends('layouts.mainForms')
 @section('content')
 
-@extends('layouts.mainForms')
-@section('content')
-
 <div class="container_editar">
   <h2>Editar Perfil</h2>
   <form id="profileForm">
