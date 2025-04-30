@@ -1,6 +1,6 @@
 @extends('layouts.mainForms')
 @section('content')
-  <h1 class="titulo">NOTÍCIAS E ACONTECIMENTOS ATUAIS.</h1>
+  <h1 class="titulo3">NOTÍCIAS E ACONTECIMENTOS ATUAIS.</h1>
   <div class="container">
     <div class="card">
       <div class="categoria-noticias">
@@ -11,7 +11,7 @@
       </div>
       <a href="https://www.cnnbrasil.com.br/internacional/aquecimento-global-tornara-cidades-quentes-demais-para-olimpiadas-ate-2050/"
         target="_blank">
-        <h2>Aquecimento global tornará cidades quentes demais para Olimpíadas até 2050</h2>
+        <h2 class="titulo2">Aquecimento global tornará cidades quentes demais para Olimpíadas até 2050</h2>
       </a>
       <a href="https://www.cnnbrasil.com.br/internacional/aquecimento-global-tornara-cidades-quentes-demais-para-olimpiadas-ate-2050/"
         target="_blank">
@@ -32,7 +32,7 @@
       </div>
       <a href="https://www.cnnbrasil.com.br/colunas/geyze-diniz/nacional/brasil/o-que-o-aquecimento-global-tem-a-ver-com-o-seu-prato-de-comida/"
         target="_blank">
-        <h2>O que o aquecimento global tem a ver com seu prato de comida?</h2>
+        <h2 class="titulo2">O que o aquecimento global tem a ver com seu prato de comida?</h2>
       </a>
       <a href="https://www.cnnbrasil.com.br/colunas/geyze-diniz/nacional/brasil/o-que-o-aquecimento-global-tem-a-ver-com-o-seu-prato-de-comida/"
         target="_blank">
@@ -52,7 +52,7 @@
       </div>
       <a href="https://www.cnnbrasil.com.br/tecnologia/o-que-foi-decidido-em-cada-cop-veja-linha-do-tempo/"
         target="_blank">
-        <h2>O que foi decidido em cada COP? Veja linha do tempo</h2>
+        <h2 class="titulo2">O que foi decidido em cada COP? Veja linha do tempo</h2>
       </a>
       <a href="https://www.cnnbrasil.com.br/tecnologia/o-que-foi-decidido-em-cada-cop-veja-linha-do-tempo/"
         target="_blank">

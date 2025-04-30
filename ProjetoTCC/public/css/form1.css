@@ -57,15 +57,24 @@ nav ul li a {
     background: white;
     padding: 30px;
     margin: 40px auto; 
-    width: 75%;
+    width: 80%;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border: 3px solid #28a745;
 }
 
-.form-container h2, .form-container h3 {
+.form-container h2{
     color: #333;
     font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap;
+    margin-bottom: 40px;
+}
+
+.form-container h3{
+    color: #333;
+    font-weight: bold;
+    margin-left: 350px;
 }
 
 input {
@@ -142,15 +151,6 @@ nav ul li a {
     text-transform: uppercase; 
     padding: 10px 15px; 
     transition: 0.3s; 
-}
-
-.titulo{
-    margin-bottom: 20px;
-}
-
-.subtitulo{
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .botao-input {

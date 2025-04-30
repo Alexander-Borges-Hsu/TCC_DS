@@ -77,7 +77,7 @@
         <label>Quilometragem média mensal de cada tipo</label>
         <input type="text" placeholder="Quilometragem mensal">
         <br>
-        <h3 class="subtitulo">Máquinas e Equipamentos</h3>
+        <h2 class="subtitulo">Máquinas e Equipamentos</h2>
         <label>Quantas máquinas a empresa usa regularmente? (Descrição por tipo)</label>
         <input type="text" placeholder="Quantidade e descrição das máquinas">
         <br>

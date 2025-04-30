@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +15,6 @@
     <link rel="stylesheet" href="/css/styleFooter.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
 <body>
     <header class="header-form">
         <h1><span class="verde">Verde</span><span class="calc">Calc</span></h1>
@@ -35,9 +33,7 @@
     {{--Incluir aside--}}
     <main>
         @yield('content')
-
     </main>
-    
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -164,6 +160,7 @@
 
     <script src="/js/scriptF1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

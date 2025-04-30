@@ -24,9 +24,8 @@
                 <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj" required minlength="18" maxlength="18">
                 <span id="erro-cnpj" class="erro"></span>
                 <button value="Registrar" id="registrar" class="registrarBT">Registrar</button>
-                <input type="button" value="GERAR CNPJ"  onclick="alert('Para gerar CNPJ falso, acesse: https://www.4devs.com.br/gerador_de_cnpj')" 
-                class="btn-cnpj" 
-                />              
+                <input type="button" value="GERAR CNPJ"  onclick="alert('Para gerar CNPJ, acesse: https://www.4devs.com.br/gerador_de_cnpj')" 
+                class="btn-cnpj"/>
             </form>
         </div>
         <div class="formulario-container logar">
@@ -45,12 +44,12 @@
         <div class="alternativo">
             <div class="painel-alternativo painel-esquerdo">
                 <h1>Bem vindo de volta!</h1>
-                <p>Entre no nosso site e descubra o quanto de Carbono você emite na atmosfera.</p>
+                <p>Entre no nosso site e descubra o quanto de Carbono sua empresa emite na atmosfera.</p>
                 <button class="hidden" id="login">Entrar</button>
             </div>
             <div class="painel-alternativo painel-direito">
                 <h1>Bem vindo!</h1>
-                <p>Se registre no nosso site e descubra o quanto de Carbono você emite na atmosfera.</p>
+                <p>Se registre no nosso site e descubra o quanto de Carbono sua empresa emite na atmosfera.</p>
                 <button class="hidden" id="register">Registrar</button>
             </div>
         </div>
