@@ -10,7 +10,7 @@
         <p>
             Bem-vindo à VerdeCalc! Experimente nossa Calculadora de Carbono, uma ferramenta que estima as emissões de
             CO₂ geradas por atividades como transporte e consumo de energia.
-            Ao inserir dados sobre seus hábitos diários, você poderá entender seu impacto ambiental e adotar práticas
+            Ao inserir dados sobre seus consumos, você poderá entender o impacto ambiental da sua empresa e adotar práticas
             mais sustentáveis para reduzir as emissões de gases do efeito estufa.
         </p>
         <a href="/navegar/formularioUm" class="btn">Comece Agora</a>

@@ -23,15 +23,14 @@
                         </div>
                         <div>
                             <a href="#" class="nav__name">Usuário</a>
-                            
                         </div>
                     </div>
                     <div class="nav__menu">
                         <ul class="nav__list">
-                            <li class="nav__item"><a href="#" class="nav__link active">Home</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">Calculadora</a></li>
+                            <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active">Home</a></li>
+                            <li class="nav__item"><a href="/navegar/formularioUm" class="nav__link">Calculadora</a></li>
                             <li class="nav__item"><a href="#" class="nav__link">Cadastrar Produto</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">Perfil</a></li>
+                            <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link">Editar Perfil</a></li>
                             <li class="nav__item"><a href="#" class="nav__link">Sobre Nós</a></li>
                         </ul>
                     </div>

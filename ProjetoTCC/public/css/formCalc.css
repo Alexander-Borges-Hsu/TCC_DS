@@ -1,0 +1,14 @@
+
+
+form input,
+form select,
+form textarea {
+    padding: 6px 10px !important;
+    font-size: 14px !important;
+    height: auto !important;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}

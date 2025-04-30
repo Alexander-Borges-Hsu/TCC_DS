@@ -21,7 +21,8 @@
         <nav>
             <ul>
                 <li><a href="/navegar/telaInicial">Home</a></li>
-                <li><a href="/navegar/formularioUm" class="busque">Calculadora</a></li>
+                <li><a href="/navegar/formularioUm">Registre sua empresa</a></li>
+                <li><a href="/navegar/editarPerfil">Editar perfil</a></li>
                 <li><a href="/navegar/formularioDois">Notícias</a></li>
             </ul>
         </nav>
@@ -30,7 +31,7 @@
             <span>Olá, Usuário</span>
         </div>
     </header>
-    {{--Incluir aside--}}
+    
     <main>
         @yield('content')
     </main>
