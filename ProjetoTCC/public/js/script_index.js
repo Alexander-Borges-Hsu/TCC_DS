@@ -113,7 +113,7 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
         if (response.ok) {
             const result = await response.json();
             alert(result.message); // ou redireciona
-            window.location.href = '/'; // Redireciona para a página de login
+            window.location.href = '/navegar/welcome'; // Redireciona para a página de login
             form.reset();
         } else if (response.status === 422) {
             const result = await response.json();
@@ -154,7 +154,7 @@ document.getElementById('form-login').addEventListener('submit', async function(
 
         if (response.ok) {
             const result = await response.json();
-            window.location.href = '/navegar/telaInicial'; // MUDAR DESTINO AO LOGAR
+            window.location.href = '/'; // MUDAR DESTINO AO LOGAR
         } else if (response.status === 422) {
             const result = await response.json();
             const errors = result.errors;

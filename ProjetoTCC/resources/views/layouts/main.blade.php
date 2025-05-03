@@ -12,19 +12,30 @@
 </head>
 <body>
   <header class="header">
-            <a href="#" class="header__logo">Usuário</a>
+            <!-- <a href="#" class="header__logo">Usuário</a> -->
             <ion-icon name="menu-outline" class="header__toggle" id="nav-toggle"></ion-icon>
             <nav class="nav" id="nav-menu">
                 <div class="nav__content bd-grid">
                     <ion-icon name="close-outline" class="nav__close" id="nav-close"></ion-icon>
+                    @if(Auth::user() != null)
                     <div class="nav__perfil">
                         <div class="nav__img">
-                            <img src="assets/img/perfil.png" alt="">
+                            <img src="/imagens/perfil.png" alt="">
                         </div>
                         <div>
-                            <a href="#" class="nav__name">Usuário</a>
+                            <a href="/navegar/editarPerfil" class="nav__name">Olá, {{ Auth::user()->nome }}</a>
                         </div>
                     </div>
+                    @else
+                    <div class="nav__perfil">
+                        <div class="nav__img">
+                            <img src="/imagens/perfil.png" alt="">
+                        </div>
+                        <div>
+                            <a href="/navegar/welcome" class="nav__name">Entre ou cadastre-se</a>
+                        </div>
+                    </div>
+                    @endif
                     <div class="nav__menu">
                         <ul class="nav__list">
                             <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active">Home</a></li>

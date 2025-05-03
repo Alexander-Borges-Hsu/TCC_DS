@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class EventController extends Controller
 {
     public function index(){
-        return view('welcome');
+        return view('telaInicial');
     }
     public function navegar($page){
+
         return view($page);
     }
 
