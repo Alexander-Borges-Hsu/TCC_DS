@@ -70,5 +70,5 @@ jobs:
         with:
           app-name: 'Verdecalc'
           slot-name: 'Production'
-          package: ./php-app
+          package: ./TCC_DS/ProjetoTCC
           
