@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: read #This is required for actions/checkout
 
     steps:
       - uses: actions/checkout@v4
@@ -22,21 +22,25 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: mbstring, bcmath, curl, fileinfo, openssl, tokenizer, xml
 
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Check if composer.json exists
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: 'composer.json'
 
-      - name: Copy Laravel files to deployment directory
-        run: |
-          mkdir deploy
-          rsync -av --exclude='.git*' --exclude='node_modules' --exclude='tests' ./ ./deploy
+      - name: Run composer install if composer.json exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
 
-      - name: Upload artifact for deployment
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: php-app
-          path: deploy
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -60,9 +64,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_668AE6BC71964A9796A5BDB43880E6EC }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A4FE668BDC6244BFB02E15ACEA96EEF4 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D41375F454D946A782DF408649EF6047 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B84E3AF98B2A49729AD5502FA352E4EA }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1650F80A8AFC4E699871434D542E88C8 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_721F9EFC41E34775AF31E21DD3F1DC21 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -70,5 +74,5 @@ jobs:
         with:
           app-name: 'Verdecalc'
           slot-name: 'Production'
-          package: ./TCC_DS/ProjetoTCC
+          package: .
           
