@@ -12,7 +12,6 @@
 </head>
 <body>
   <header class="header">
-            <!-- <a href="#" class="header__logo">Usuário</a> -->
             <ion-icon name="menu-outline" class="header__toggle" id="nav-toggle"></ion-icon>
             <nav class="nav" id="nav-menu">
                 <div class="nav__content bd-grid">
@@ -37,20 +36,25 @@
                     </div>
                     @endif
                     <div class="nav__menu">
-                        <ul class="nav__list">
-                            <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active">Home</a></li>
-                            <li class="nav__item"><a href="/navegar/formularioUm" class="nav__link">Calculadora</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">Cadastrar Produto</a></li>
-                            <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link">Editar Perfil</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">Sobre Nós</a></li>
-                        </ul>
-                    </div>
-                    <div class="nav__social">
-                        <a href="#" class="nav__social-icon"><ion-icon name="logo-github"></ion-icon></a>                       
-                    </div>
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active"><i class='bx bx-home-alt-2'></i> Home</a></li>
+                        <li class="nav__item"><a href="/navegar/formularioUm" class="nav__link"><i class='bx bx-calculator'></i> Calculadora</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bx-cart-add'></i> Cadastrar Produto</a></li>
+                        <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link"><i class='bx bx-user-circle'></i> Editar Perfil</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
+                        <li class="nav__item">
+                        <form action="/logout" method="POST" style="margin: 0; padding: 0;">
+                        <button type="submit" class="nav__link" style="background: none; border: none; cursor: pointer; padding: 0; color: inherit;"><i class='bx bx-log-out' style="font-size: 1.3rem; margin-top: 2px;"></i></button>
+                        </form>
+                        </li>
+                    </ul>
+                    </div>    
                 </div>
             </nav>
         </header>
+
+        
+
 
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
         <script src="assets/js/main.js"></script>
