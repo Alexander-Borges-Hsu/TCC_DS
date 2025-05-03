@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -22,25 +22,21 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: mbstring, bcmath, curl, fileinfo, openssl, tokenizer, xml
 
-      - name: Check if composer.json exists
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: 'composer.json'
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run composer install if composer.json exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
+      - name: Copy Laravel files to deployment directory
+        run: |
+          mkdir deploy
+          rsync -av --exclude='.git*' --exclude='node_modules' --exclude='tests' ./ ./deploy
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
-      - name: Upload artifact for deployment job
+      - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
         with:
           name: php-app
-          path: release.zip
+          path: deploy
 
   deploy:
     runs-on: ubuntu-latest
@@ -74,5 +70,5 @@ jobs:
         with:
           app-name: 'Verdecalc'
           slot-name: 'Production'
-          package: .
+          package: ./php-app
           
