@@ -1,0 +1,49 @@
+name: Deploy Laravel App to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+
+      - name: Instalar PHP, Composer, Node
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, openssl, pdo, tokenizer
+          tools: composer
+
+      - name: Ir para o diretório do projeto
+        run: cd ProjetoTCC
+
+      - name: Instalar dependências PHP
+        run: |
+          cd ProjetoTCC
+          composer install --no-dev --optimize-autoloader
+
+      - name: Instalar dependências JS e compilar assets
+        run: |
+          cd ProjetoTCC
+          npm install
+          npm run build
+
+      - name: Configurar variáveis .env
+        run: |
+          cd ProjetoTCC
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Deploy para Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: Verdecalc
+          slot-name: Production
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          package: ProjetoTCC
