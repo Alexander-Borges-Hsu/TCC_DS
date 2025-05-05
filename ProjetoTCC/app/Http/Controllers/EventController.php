@@ -14,10 +14,19 @@ class EventController extends Controller
         return view('telaInicial');
     }
     public function navegar($page){
-
-        return view($page);
+        $protectedLog = ['welcome' ];
+        $protectedUnLog = ['editarPerfil'];
+        if(in_array($page, $protectedLog) && Auth::check()){ 
+            return redirect('/');
+        }elseif(in_array($page, $protectedUnLog) && !Auth::check()){
+            return redirect('/navegar/welcome');
+        }    
+        else{
+            return view($page);
+        }
     }
 
+    //Método para fazer o cadastro
     public function store(Request $request){
 
         $validator = Validator::make($request->all(), [
@@ -51,6 +60,7 @@ class EventController extends Controller
         return response()->json(['message' => 'Cadastro realizado com sucesso!']);
     }
 
+    //Método para fazer o login
     public function login(Request $request){
         $credenciais = $request->validate([
             'email' => ['required'],

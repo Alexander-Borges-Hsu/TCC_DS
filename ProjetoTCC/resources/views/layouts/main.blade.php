@@ -43,9 +43,15 @@
                         <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link"><i class='bx bx-user-circle'></i> Editar Perfil</a></li>
                         <li class="nav__item"><a href="#" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
                         <li class="nav__item">
+                            
+                            {{-- Botão do Logout --}}
+                        @if(Auth::user() != null)  
                         <form action="/logout" method="POST" style="margin: 0; padding: 0;">
-                        <button type="submit" class="nav__link" style="background: none; border: none; cursor: pointer; padding: 0; color: inherit;"><i class='bx bx-log-out' style="font-size: 1.3rem; margin-top: 2px;"></i></button>
+                            @csrf
+                            <button type="submit" class="nav__link" style="background: none; border: none; cursor: pointer; padding: 0; color: inherit;"><i class='bx bx-log-out' style="font-size: 1.3rem; margin-top: 2px;"></i></button>
+                            
                         </form>
+                        @endif
                         </li>
                     </ul>
                     </div>    
