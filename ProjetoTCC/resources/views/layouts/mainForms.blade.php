@@ -28,7 +28,7 @@
         </nav>
         <div class="usuario">
             <div class="icon"></div>
-            <span>Olá, Usuário</span>
+            <span>Olá, {{Auth::user()->nome}}</span>
         </div>
     </header>
     

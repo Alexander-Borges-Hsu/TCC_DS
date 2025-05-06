@@ -36,7 +36,7 @@
                 <span class="erro" id="erro-Log-email"></span>
                 <input type="password" placeholder="senha" name="password" required>
                 <span class="erro" id="erro-Log-password"></span>
-                <a href="#">Esqueceu a senha?</a>
+                <a href="/navegar/nova-senha">Esqueceu a senha?</a>
                 <button style="margin-left: 10px;">Entrar</button>
             </form>
         </div>

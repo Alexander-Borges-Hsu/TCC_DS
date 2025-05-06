@@ -15,7 +15,7 @@ class EventController extends Controller
     }
     public function navegar($page){
         $protectedLog = ['welcome' ];
-        $protectedUnLog = ['editarPerfil'];
+        $protectedUnLog = ['editarPerfil', 'formularioUm'];
         if(in_array($page, $protectedLog) && Auth::check()){ 
             return redirect('/');
         }elseif(in_array($page, $protectedUnLog) && !Auth::check()){
