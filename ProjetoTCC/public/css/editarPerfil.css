@@ -1,89 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f6f6f6;
-  }
-  
-  .container_editar{
-    max-width: 600px;
-    margin: 40px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border: 3px solid #28a745;
-  }
-  
-  h2{
-    margin-left: 190px;
-    color: #2e2e2e;
-    margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f6f6f6;
+  margin: 0;
+  padding: 0;
+}
+
+.container_editar {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 3px solid #28a745;
+}
+
+h2,
+h3 {
+  text-align: center;
+  color: #2e2e2e;
+  margin: 10px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; 
+  object-fit: cover;
+  border: 3px solid #2ECC71; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: none;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+button.btn-save {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button.btn-save:hover {
+  background-color: #45a049;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .container_editar {
+    margin: 20px 15px;
+    padding: 20px;
   }
 
-  h3{
-    margin-left: 190px;
-    color: #2e2e2e;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  h2,
+  h3 {
+    font-size: 20px;
   }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+}
+
+@media (max-width: 480px) {
+  .container_editar {
+    padding: 15px;
   }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 10px;
+
+  h2,
+  h3 {
+    font-size: 18px;
   }
-  
-  input[type="text"],
-  input[type="password"],
-  input[type="file"] {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-  }
-  
-  .avatar-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  #preview {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; 
-    object-fit: cover;
-    border: 3px solid #2ECC71; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    display: none;
-    margin-top: 10px;
-  }
-  
-  .error {
-    color: red;
-    font-size: 14px;
-  }
-  
+
   button.btn-save {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    font-size: 14px;
+    padding: 10px;
   }
-  
-  button.btn-save:hover {
-    background-color: #45a049;
+
+  #preview {
+    width: 100px;
+    height: 100px;
   }
+}
+
   
