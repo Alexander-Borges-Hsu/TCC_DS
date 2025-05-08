@@ -1,3 +1,24 @@
+<!--
+/*
+ * Verdecalc
+ * Copyright (C) 2025 Equipe Verdecalc
+ *
+ * Este programa é software livre; você pode redistribuí-lo e/ou
+ * modificá-lo sob os termos da Licença Pública Geral GNU conforme
+ * publicada pela Free Software Foundation; na versão 2 da licença,
+ * ou (a seu critério) qualquer versão posterior.
+ *
+ * Este programa é distribuído na esperança de que seja útil,
+ * mas SEM NENHUMA GARANTIA; sem mesmo a garantia implícita de
+ * COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM DETERMINADO FIM. Veja a
+ * Licença Pública Geral GNU para mais detalhes.
+ *
+ * Você deve ter recebido uma cópia da Licença Pública Geral GNU
+ * junto com este programa; se não, veja <https://www.gnu.org/licenses/>.
+ */
+ !-->
+
+
 @extends('layouts.mainForms')
 @section('content')
 <section class="form-container">
@@ -22,7 +43,7 @@
         <label>Quantos funcionários a empresa possui?</label>
         <input type="text" placeholder="Quantos funcionários possui">
 
-        <h3 class="subtitulo">Dados Operacionais e Produção</h3>
+        <h3 class="subtituloform1">Dados Operacionais e Produção</h3>
         <label>A empresa realiza monitoramento de emissões de CO₂?</label>
         <div class="buttons">
             <input type="radio" id="monitoramento-sim" name="monitoramento" value="sim">
@@ -54,7 +75,7 @@
             <label for="cert-nao">Não</label>
         </div>
 
-        <h3 class="subtitulo">Gestão de Sustentabilidade</h3>
+        <h3 class="subtituloform1">Gestão de Sustentabilidade</h3>
         <label>A empresa já implementou ações para redução de carbono?</label>
         <div class="buttons">
             <input type="radio" id="reduz-sim" name="reducao_carbono" value="sim">
