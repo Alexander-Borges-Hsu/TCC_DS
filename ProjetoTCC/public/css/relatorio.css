@@ -1,0 +1,124 @@
+        .area-conteudo-relatorio {
+            background-color: #f9fafb; /* Tailwind gray-50, um cinza muito claro para o fundo geral da área de conteúdo */
+            color: #1f2937; /* Tailwind gray-800 */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            min-height: calc(100vh - 64px); /* Considerando uma barra de navegação de 64px */
+        }
+
+        .cartao-relatorio {
+            background-color: #ffffff; /* Fundo branco para os cartões */
+            border-radius: 0.75rem; /* Bordas mais arredondadas (rounded-xl) */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Sombra sutil (shadow-lg) */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 2rem; /* mb-8, espaçamento entre cartões */
+        }
+
+        .titulo-cartao-relatorio {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            color: #111827; /* Tailwind gray-900 */
+            margin-bottom: 1rem; /* mb-4 */
+            text-align: center;
+        }
+
+        .area-conteudo-relatorio h1.titulo-pagina {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: #111827; /* Tailwind gray-900 */
+            margin-bottom: 2.5rem; /* mb-10 */
+            text-align: center;
+        }
+
+        /* Ajustes para garantir que os textos dentro dos cartões e formulário sejam escuros */
+        .cartao-relatorio label,
+        .cartao-relatorio select,
+        .cartao-relatorio input[type=\'date\'],
+        .cartao-relatorio p,
+        .cartao-relatorio h3 {
+            color: #374151; /* Tailwind gray-700 */
+        }
+        .cartao-relatorio .texto-valor-principal { color: #1f2937; font-weight: bold; font-size: 2.25rem; /* text-4xl */ }
+        .cartao-relatorio .texto-valor-secundario { color: #1f2937; font-weight: bold; font-size: 1.875rem; /* text-3xl */ }
+        .cartao-relatorio .texto-valor-terciario { color: #1f2937; font-weight: bold; font-size: 1.5rem; /* text-2xl */ }
+
+        .cartao-relatorio .text-red-600 { color: #dc2626 !important; } /* Manter classes utilitárias do Tailwind */
+        .cartao-relatorio .text-green-600 { color: #16a34a !important; } /* Manter classes utilitárias do Tailwind */
+        .cartao-relatorio .text-gray-500 { color: #6b7280 !important; } /* Manter classes utilitárias do Tailwind */
+
+        .cartao-relatorio button.botao-primario {
+            background-color: #2563eb; /* Tailwind blue-600 */
+            color: white;
+            padding: 0.5rem 1.5rem; /* py-2 px-6 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 500; /* font-medium */
+            transition: background-color 0.2s ease-in-out;
+        }
+        .cartao-relatorio button.botao-primario:hover {
+            background-color: #1d4ed8; /* Tailwind blue-700 */
+        }
+
+        .cartao-relatorio button.botao-secundario {
+            background-color: #16a34a; /* Tailwind green-600 */
+            color: white;
+            padding: 0.75rem 2rem; /* py-3 px-8 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 600; /* font-semibold */
+            transition: background-color 0.2s ease-in-out;
+        }
+        .cartao-relatorio button.botao-secundario:hover {
+            background-color: #15803d; /* Tailwind green-700 */
+        }
+
+        .campo-formulario {
+            margin-top: 0.25rem; /* mt-1 */
+            display: block;
+            width: 100%;
+            border-radius: 0.375rem; /* rounded-md */
+            border-color: #d1d5db; /* border-gray-300 */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+            padding: 0.5rem 0.75rem; /* py-2 px-3 */
+        }
+        .campo-formulario:focus {
+            border-color: #4f46e5; /* focus:border-indigo-500 */
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.5); /* focus:ring focus:ring-indigo-500 focus:ring-opacity-50 */
+        }
+
+@media print {
+    body.print-mode {
+        margin: 0;
+        padding: 0;
+    }
+    /* Esconde elementos não essenciais na impressão */
+    body.print-mode form,
+    body.print-mode button,
+    body.print-mode .container > h1,
+    body.print-mode nav, /* Esconde navegação, se houver */
+    body.print-mode footer /* Esconde rodapé, se houver */
+    {
+        display: none !important;
+    }
+    /* Ajusta layout para impressão */
+    body.print-mode .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 1cm;
+        box-shadow: none;
+    }
+    body.print-mode .grid {
+        display: block; /* Simplifica grid para impressão */
+    }
+    body.print-mode .grid > div {
+        margin-bottom: 1cm;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid; /* Evita quebrar cards no meio da página */
+    }
+     body.print-mode canvas {
+        max-width: 100% !important; /* Garante que o gráfico caiba */
+        height: auto !important;
+    }
+}
+
