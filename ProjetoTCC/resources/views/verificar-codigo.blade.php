@@ -19,13 +19,18 @@
  !-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VerdeCalc</title>
+    <link rel="icon" href="/imagens/imagem.png">
+    <link rel="stylesheet" href="/css/verificarCodigo.css">
 </head>
 <body>
+    <div class="container">
+    <div class="form-box">
+    
 <h2>Verificar Código</h2>
 
 @if ($errors->any())
@@ -44,7 +49,8 @@
 
     <button type="submit">Redefinir Senha</button>
 </form>
-
+</div>
+</div>
 
 
 </body>
