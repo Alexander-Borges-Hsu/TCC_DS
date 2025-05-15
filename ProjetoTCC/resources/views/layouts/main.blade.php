@@ -58,18 +58,18 @@
                     @endif
                     <div class="nav__menu">
                     <ul class="nav__list">
-                        <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active"><i class=\'bx bx-home-alt-2\'></i> Home</a></li>
-                        <li class="nav__item"><a href="/navegar/formularioUm" class="nav__link"><i class=\'bx bx-calculator\'></i> Calculadora</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link"><i class=\'bx bx-cart-add\'></i> Cadastrar Produto</a></li>
-                        <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link"><i class=\'bx bx-user-circle\'></i> Editar Perfil</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link"><i class=\'bx bxs-user-detail\'></i> Sobre Nós</a></li>
+                        <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active"><i class='bx bx-home-alt-2'></i> Home</a></li>
+                        <li class="nav__item"><a href="/navegar/formularioUm" class="nav__link"><i class='bx bx-calculator'></i> Calculadora</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bx-cart-add'></i> Cadastrar Produto</a></li>
+                        <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link"><i class='bx bx-user-circle'></i> Editar Perfil</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
                         <li class="nav__item">
                             
                             {{-- Botão do Logout --}}
                         @if(Auth::user() != null)  
                         <form action="/logout" method="POST" style="margin: 0; padding: 0;">
                             @csrf
-                            <button type="submit" class="nav__link" style="background: none; border: none; cursor: pointer; padding: 0; color: inherit;"><i class=\'bx bx-log-out\' style="font-size: 1.3rem; margin-top: 2px;"></i></button>
+                            <button type="submit" class="nav__link" style="background: none; border: none; cursor: pointer; padding: 0; color: inherit;"><i class='bx bx-log-out' style="font-size: 1.3rem; margin-top: 2px;"></i></button>
                             
                         </form>
                         @endif
@@ -84,7 +84,6 @@
 
         {{-- Scripts Globais --}}
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-        {{-- O arquivo assets/js/main.js não foi encontrado no projeto fornecido, então a referência foi mantida mas pode precisar de ajuste --}}
         <script src="{{ asset("assets/js/main.js") }}"></script> 
         @stack("scripts") {{-- Adicionado para scripts específicos da página --}}
 </body>

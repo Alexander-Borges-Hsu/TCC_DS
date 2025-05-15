@@ -26,11 +26,6 @@ class EventController extends Controller
         } elseif(in_array($page, $protectedUnLog) && !Auth::check()){
             return redirect("/navegar/welcome");
         } 
-        // Trata especificamente a página de relatório
-        elseif ($page === "relatorio") {
-            return $this->indexRelatorio($request);
-        }
-        // Para outras páginas, verifica se a view existe
         else{
             if (View::exists($page)) {
                 return view($page);
