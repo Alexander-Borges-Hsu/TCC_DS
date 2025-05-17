@@ -90,7 +90,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="https://github.com/Alexander-Borges-Hsu/TCC_DS" target="_blank">
                                         <i class="fab fa-github"></i>
                                     </a>
                                 </li>
