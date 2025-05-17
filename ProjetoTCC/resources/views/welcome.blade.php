@@ -50,6 +50,7 @@
         </div>
         <div class="formulario-container logar">
             <form action="" method="POST" id="form-login">
+                {{-- CSRF necessario para o POST --}}
                 @csrf
                 <h1>Entre com a sua conta</h1>
                 <input type="email" placeholder="Email" name="email" required>
