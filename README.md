@@ -11,3 +11,13 @@ Repositório para o Desenvolvimento do TCC - Técnico em Desenvolvimento de Sist
   - Verificar se nas variáveis de ambiente PATH contém a referencia do php do xampp com - C:\xampp\php - caso tenha outro php sendo referenciado pode dar conflitos
   - Gerar uma chave com - php artisan key:generate
   - Ligar o banco e rodar as migrações com - php artisan migrate
+
+# Técnologias utilizadas
+
+ - Framework Laravel, contém arquitetura MVC
+ - Banco de dados MYSQL
+ - PWA (Progressive web application)
+ - Node.js | Vite
+ - Técnologias do Laravel | Extensão de Layouts, migrações, Artisan, rotas
+ - Composer
+ - Bootstrap
