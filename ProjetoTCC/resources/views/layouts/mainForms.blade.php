@@ -75,21 +75,6 @@
                         <div class="socialLinks">
                             <ul>
                                 <li>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="https://github.com/Alexander-Borges-Hsu/TCC_DS" target="_blank">
                                         <i class="fab fa-github"></i>
                                     </a>
@@ -105,12 +90,12 @@
                         </h5>
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="/navegar/telaInicial">
                                     início
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/navegar/formularioUm">
                                     Calculadora CO2
                                 </a>
                             </li>
@@ -120,59 +105,23 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    Quem somos
+                                <a href="/navegar/formularioDois">
+                                    Notícias
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    FAQ
+                                    Sobre Nós
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="widget4">
-                        <h5>
-                            Outros Links
-                        </h5>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Termos de uso
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Política de Privacidade
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Contato
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Redes sociais
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="copyRightArea">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p>&copy; Todos os direitos reservados 2024.</p>
+                        <p>&copy; Todos os direitos reservados 2025.</p>
                     </div>
                 </div>
             </div>

@@ -63,8 +63,7 @@
                         <li class="nav__item"><a href="/navegar/cadastrarProduto" class="nav__link"><i class='bx bx-cart-add'></i> Cadastrar Produto</a></li>
                         <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link"><i class='bx bx-user-circle'></i> Editar Perfil</a></li>
                         <li class="nav__item"><a href="#" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
-                        <li class="nav__item">
-                            
+                        <!-- <li class="nav__item"><a href="#" class="nav__link"> Dicas para redução</a></li> -->
                             {{-- Botão do Logout --}}
                         @if(Auth::user() != null)  
                         <form action="/logout" method="POST" style="margin: 0; padding: 0;">
