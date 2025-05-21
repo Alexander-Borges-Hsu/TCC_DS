@@ -21,3 +21,4 @@ Repositório para o Desenvolvimento do TCC - Técnico em Desenvolvimento de Sist
  - Técnologias do Laravel | Extensão de Layouts, migrações, Artisan, rotas
  - Composer
  - Bootstrap
+ - Git e Github
