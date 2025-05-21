@@ -58,7 +58,7 @@ return [
             'strict' => true,
             'engine' => null,
              'options' => extension_loaded('pdo_mysql') ? [
-            //     PDO::MYSQL_ATTR_SSL_CA => base_path('ssl/BaltimoreCyberTrustRoot.crt.pem'),
+            //    PDO::MYSQL_ATTR_SSL_CA => base_path('ssl/BaltimoreCyberTrustRoot.crt.pem'),
                 ] : [],
         ],
 

@@ -34,7 +34,11 @@
 <h2>Verificar Código</h2>
 
 @if ($errors->any())
-    <div style="color:red">{{ $errors->first() }}</div>
+    <div style="color: red;">
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
 @endif
 
 <form method="POST" action="{{ route('senha.verificar.codigo') }}">

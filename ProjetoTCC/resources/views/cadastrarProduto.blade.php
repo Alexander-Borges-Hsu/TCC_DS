@@ -23,7 +23,7 @@
 
     <section class="form-container">
     <h2 class="titulo">Cadastrar novo produto para o cálculo</h2>
-    <!-- <form method="POST" action="{{ route('') }}"> -->
+    <form method="POST" action="">
         @csrf
         <label>Nome do produto</label>
         <input type="text" name="nome" placeholder="Nome do produto" required>
@@ -42,7 +42,7 @@
 
         <br>
         <input type="submit" value="Cadastrar Produto" id="registrar" class="botao-input">
-    <!-- </form> -->
+    </form>
 </section>
 
 @endsection

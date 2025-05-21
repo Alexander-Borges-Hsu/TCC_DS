@@ -17,22 +17,19 @@ class EventController extends Controller
     }
 
     // Modificado para aceitar Request e tratar a página de relatório
-    public function navegar(Request $request, $page){
-        $protectedLog = ["welcome"];
-        $protectedUnLog = ["editarPerfil", "formularioUm"];
+    public function navegar($page){
+        $protectedLog = ['welcome'];
+        $protectedUnLog = ['editarPerfil', 'formularioUm', 'cadastrarProduto'];
 
         if(in_array($page, $protectedLog) && Auth::check()){ 
-            return redirect("/");
-        } elseif(in_array($page, $protectedUnLog) && !Auth::check()){
-            return redirect("/navegar/welcome");
+            return redirect('/');
+        } elseif(in_array($page , $protectedUnLog) && !Auth::check()){
+            return redirect('/navegar/welcome');
         } 
         else{
-            if (View::exists($page)) {
                 return view($page);
             }
-            abort(404, "View [{$page}] não encontrada."); // Página não encontrada
-        }
-    }
+            }
 
     // Método para exibir o relatório (lógica movida para cá)
     public function indexRelatorio(Request $request)

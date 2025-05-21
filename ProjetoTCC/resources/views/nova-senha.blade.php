@@ -12,7 +12,7 @@
     <h2>Verificar Email</h2>
 
     @if ($errors->any())
-        <div class="error">{{ $errors->first() }}</div>
+        <div class="error">Email não cadastrado.</div>
     @endif
 
     <form method="POST" action="{{ route('senha.enviar.codigo') }}">
