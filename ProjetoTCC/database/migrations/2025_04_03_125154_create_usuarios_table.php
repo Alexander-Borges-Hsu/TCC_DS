@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('cnpj')->unique();
+            $table->string('nome_empresa')->nullable();
+            $table->string('foto_perfil')->nullable();
             $table->timestamps();
         });
     }
