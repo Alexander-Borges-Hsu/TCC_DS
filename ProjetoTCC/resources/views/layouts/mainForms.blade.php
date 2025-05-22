@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="/css/formCalc.css">
     <link rel="stylesheet" href="/css/form2.css">
     <link rel="stylesheet" href="/css/editarPerfil.css">
+    <link rel="stylesheet" href="/css/styleDicas.css">
     <link rel="stylesheet" href="/css/styleFooter.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
@@ -43,6 +44,7 @@
                 <li><a href="/navegar/telaInicial">Home</a></li>
                 <li><a href="/navegar/formularioUm">Registre sua empresa</a></li>
                 <li><a href="/navegar/editarPerfil">Editar perfil</a></li>
+                <li><a href="/navegar/dicas">Dicas</a></li>
                 <li><a href="/navegar/formularioDois">Notícias</a></li>
             </ul>
         </nav>
@@ -100,7 +102,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/navegar/dicas">
                                     Dicas para redução de carbono
                                 </a>
                             </li>
