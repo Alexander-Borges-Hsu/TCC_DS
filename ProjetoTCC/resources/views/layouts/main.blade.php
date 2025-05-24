@@ -66,7 +66,8 @@
                         <li class="nav__item"><a href="/navegar/dicas" class="nav__link"><i class='bx bx-bulb'></i> Dicas</a></li>
                             {{-- Botão do Logout --}}
                         @if(Auth::user() != null)  
-                        <form action="/logout" method="POST" style="margin: 0; padding: 0;">
+                        <form action="/logout" method="POST" style="margin: 0; padding: 0;" onsubmit="mostrarTelaCarregando()">
+                            {{-- CSRF necessário para o POST --}}
                             @csrf
                             <button type="submit" class="nav__link" style="background: none; border: none; cursor: pointer; padding: 0; color: inherit;"><i class='bx bx-log-out' style="font-size: 1.3rem; margin-top: 2px;"></i></button>
                             
@@ -85,6 +86,7 @@
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
         <script src="{{ asset("assets/js/main.js") }}"></script> 
         @stack("scripts") {{-- Adicionado para scripts específicos da página --}}
+        @include('layouts.carregamento') {{-- Tela de carregamento --}}
 </body>
 </html>
 

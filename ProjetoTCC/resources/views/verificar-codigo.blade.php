@@ -41,7 +41,8 @@
     </div>
 @endif
 
-<form method="POST" action="{{ route('senha.verificar.codigo') }}">
+<form method="POST" action="{{ route('senha.verificar.codigo') }}" onsubmit="mostrarTelaCarregando()">
+    {{-- CSRF necessário para o POST --}}
     @csrf
 
     <input type="email" name="email" value="{{ old('email', $email ?? '') }}" placeholder="Seu e-mail" required>
@@ -55,7 +56,7 @@
 </form>
 </div>
 </div>
-
+@include('layouts.carregamento') {{-- Tela de carregamento --}}
 
 </body>
 </html>

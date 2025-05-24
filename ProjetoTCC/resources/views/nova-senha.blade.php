@@ -15,12 +15,15 @@
         <div class="error">Email não cadastrado.</div>
     @endif
 
-    <form method="POST" action="{{ route('senha.enviar.codigo') }}">
+    <form method="POST" action="{{ route('senha.enviar.codigo') }}" onsubmit="mostrarTelaCarregando()">
+        {{-- CSRF necessário para o POST --}}
         @csrf
         <input type="email" name="email" placeholder="Email" required>
         <button type="submit">Verificar</button>
     </form>
     <a href="/" class="back-link">Voltar</a>
+
+    @include('layouts.carregamento') {{-- Tela de carregamento --}}
 </div>
 </body>
 </html>
