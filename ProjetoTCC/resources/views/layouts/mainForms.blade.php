@@ -49,10 +49,17 @@
                 <li><a href="/navegar/formularioDois">Notícias</a></li>
             </ul>
         </nav>
+        @if(Auth::user() != null)   
         <div class="usuario">
             <div class="icon"></div>
             <span>Olá, {{Auth::user()->nome}}</span>
         </div>
+        @else
+        <div class="usuario">
+            <div class="icon"></div>
+            <a href="/navegar/welcome"><span>Olá, usuário, entre ou cadastre-se</span></a>
+        </div>
+        @endif
     </header>
     
     <main>

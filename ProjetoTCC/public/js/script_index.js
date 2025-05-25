@@ -83,7 +83,7 @@ function validarCNPJ(cnpj) {
     return resultado == digitos.charAt(1);
 }
 
-// Validando o formulário de cadastro de eventos
+// Validando o formulário de cadastro 
 document.getElementById('form-cadastro').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -97,7 +97,9 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
     const cnpj = cnpjInput.value;
     if (!validarCNPJ(cnpj)) {
         erroCnpj.textContent = 'CNPJ inválido.';
+        esconderTelaCarregando();
         return; // Impede o envio se inválido
+        
     }
 
     try {
@@ -108,6 +110,7 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
                 'Accept': 'application/json'
             },
             body: data
+            
         });
 
         if (response.ok) {
@@ -129,7 +132,11 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
         console.error('Erro:', error);
         alert('Erro de conexão.');
         console.log(error);
+    } finally {
+        // --- AQUI VAI O FIM DA TELA DE CARREGAMENTO ---
+        esconderTelaCarregando();
     }
+    
 });
 
 // Validando o formulário de login
@@ -171,5 +178,8 @@ document.getElementById('form-login').addEventListener('submit', async function(
     } catch (error) {
         console.error('Erro:', error);
         alert('Erro de conexão.');
+    } finally {
+        // --- AQUI VAI O FIM DA TELA DE CARREGAMENTO ---
+        esconderTelaCarregando();
     }
 });

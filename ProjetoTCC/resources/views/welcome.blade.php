@@ -31,7 +31,8 @@
     <body>
     <div class="container" id="container">
         <div class="formulario-container registro">
-            <form action="/events" method="POST" id="form-cadastro">
+            <form action="/events" method="POST" id="form-cadastro" onsubmit="mostrarTelaCarregando()">
+                
                 @csrf
                 <h1>Crie sua conta</h1>
                 <input type="text" placeholder="Nome" id="nome" name="nome" required>
@@ -49,7 +50,7 @@
             </form>
         </div>
         <div class="formulario-container logar">
-            <form action="" method="POST" id="form-login">
+            <form action="" method="POST" id="form-login" onsubmit="mostrarTelaCarregando()">
                 {{-- CSRF necessario para o POST --}}
                 @csrf
                 <h1>Entre com a sua conta</h1>
@@ -75,8 +76,8 @@
             </div>
         </div>
     </div>
-
-
     <script src="{{ asset('js/script_index.js') }}"></script>
+
+        @include('layouts.carregamento')
     </body>
 </html>
