@@ -24,9 +24,6 @@ Route::get('/verificar-codigo', [SenhaController::class, 'formCodigo'])->name('s
 Route::post('/verificar-codigo', [SenhaController::class, 'verificarCodigo'])->name('senha.verificar.codigo');
 
 //rotas IA
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::post('/ia/perguntar', [IaController::class, 'ask'])->name('ia.perguntar');
 
 
