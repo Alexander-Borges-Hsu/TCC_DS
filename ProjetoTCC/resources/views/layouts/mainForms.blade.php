@@ -45,6 +45,7 @@
                 <li><a href="/navegar/formularioUm">Registre sua empresa</a></li>
                 <li><a href="/navegar/editarPerfil">Editar perfil</a></li>
                 <li><a href="/navegar/dicas">Dicas</a></li>
+                <li><a href="/navegar/ia">IA</a></li>
                 <li><a href="/navegar/formularioDois">Notícias</a></li>
             </ul>
         </nav>

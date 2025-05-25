@@ -83,6 +83,28 @@ button.btn-save:hover {
   background-color: #45a049;
 }
 
+textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  resize: vertical;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.ia-response-box {
+  background-color: #f0fff4;
+  border-left: 4px solid #4CAF50;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #2e2e2e;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
   .container_editar {
