@@ -27,6 +27,7 @@
         <title>VerdeCalc</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link rel="manifest" href="{{asset('manifest/manifest.json')}}">
     </head>
     <body>
     <div class="container" id="container">
@@ -45,7 +46,7 @@
                 <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj" required minlength="18" maxlength="18">
                 <span id="erro-cnpj" class="erro"></span>
                 <button value="Registrar" id="registrar" class="registrarBT">Registrar</button>
-                <input type="button" value="GERAR CNPJ"  onclick="alert('Para gerar CNPJ, acesse: https://www.4devs.com.br/gerador_de_cnpj')" 
+                <input type="button" value="GERAR CNPJ"  onclick="gerarCNPJ()" 
                 class="btn-cnpj"/>
             </form>
         </div>
@@ -78,6 +79,43 @@
     </div>
     <script src="{{ asset('js/script_index.js') }}"></script>
 
+    <script>
+        function gerarCNPJ() {
+            function gerarDigitos() {
+                let n = 9;
+                let cnpj = [];
+                for (let i = 0; i < 8; i++) {
+                    cnpj.push(Math.floor(Math.random() * 10));
+                }
+                // Adiciona os 4 dígitos fixos (da raiz do CNPJ - geralmente para empresas fictícias, usa-se 0001)
+                cnpj.push(0, 0, 0, 1);
+
+                // Calcula o primeiro dígito verificador
+                let pesos1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+                let soma1 = cnpj.reduce((soma, valor, i) => soma + valor * pesos1[i], 0);
+                let resto1 = soma1 % 11;
+                let digito1 = resto1 < 2 ? 0 : 11 - resto1;
+                cnpj.push(digito1);
+
+                // Calcula o segundo dígito verificador
+                let pesos2 = [6].concat(pesos1);
+                let soma2 = cnpj.reduce((soma, valor, i) => soma + valor * pesos2[i], 0);
+                let resto2 = soma2 % 11;
+                let digito2 = resto2 < 2 ? 0 : 11 - resto2;
+                cnpj.push(digito2);
+
+                return cnpj;
+            }
+
+            function formatarCNPJ(cnpjArray) {
+                return `${cnpjArray.slice(0, 2).join('')}.${cnpjArray.slice(2, 5).join('')}.${cnpjArray.slice(5, 8).join('')}/${cnpjArray.slice(8, 12).join('')}-${cnpjArray.slice(12).join('')}`;
+            }
+
+            let cnpj = gerarDigitos();
+            let cnpjFormatado = formatarCNPJ(cnpj);
+            alert("CNPJ gerado: " + cnpjFormatado);
+        }
+    </script>
         @include('layouts.carregamento')
     </body>
 </html>

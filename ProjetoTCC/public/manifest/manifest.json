@@ -1,0 +1,10 @@
+{
+    "name": "VerdeCalc",
+    "icons": [
+        {
+            "src": "imagens/imagem.png",
+            "type": "image/png",
+            "size": "767x762"
+        }
+    ]
+}
