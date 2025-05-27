@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'co2_consumido', // Adicionado
+        'co2_meta',      // Adicionado
+        'data_registro_co2', // Adicionado
+        'fonte_emissao_co2', // Adicionado
+        'observacoes_co2', // Adicionado
     ];
 
     /**
@@ -43,6 +48,10 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'co2_consumido' => 'decimal:2', // Adicionado cast para decimal
+            'co2_meta' => 'decimal:2',      // Adicionado cast para decimal
+            'data_registro_co2' => 'datetime', // Adicionado cast para datetime
         ];
     }
 }
+

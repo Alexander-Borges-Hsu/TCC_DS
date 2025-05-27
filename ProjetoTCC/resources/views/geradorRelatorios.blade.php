@@ -1,105 +1,232 @@
 @extends("layouts.main")
 
 @push("styles")
-    <link rel="stylesheet" href="{{ asset("css/relatorio-impressao.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/relatorio.css") }}">
+<link rel="stylesheet" href="{{ asset("css/relatorio-impressao.css") }}">
+<link rel="stylesheet" href="{{ asset("css/relatorio.css") }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
 @endpush
 
 @section("content")
 <div class="area-conteudo-relatorio">
     <div class="container mx-auto px-4 py-8">
-        <br>
-        <br>
-        <h1 class="titulo-pagina">Gerador de Relatórios - VerdeCalc</h1>
+        <h1 class="titulo-pagina fade-in">Relatório de Desempenho Ambiental</h1>
 
-        {{-- Cartão de Filtros --}}
-        <div class="max-w-3xl mx-auto cartao-relatorio">
-            <h2 class="titulo-cartao-relatorio">Filtrar Relatório</h2>
-            <form method="GET" action="{{ url("/navegar/relatorio") }}">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                    <div>
-                        <label for="selecao-periodo" class="block text-sm font-medium mb-1">Período Pré-definido:</label>
-                        <select name="periodo" id="selecao-periodo" class="campo-formulario">
-                            <option value="" {{ !($dadosRelatorio["periodo_selecionado"] ?? null) || ($dadosRelatorio["periodo_selecionado"] ?? null) == "personalizado" ? "selected" : "" }}>Personalizado</option>
-                            <option value="7dias" {{ ($dadosRelatorio["periodo_selecionado"] ?? null) == "7dias" ? "selected" : "" }}>Últimos 7 dias</option>
-                            <option value="30dias" {{ ($dadosRelatorio["periodo_selecionado"] ?? null) == "30dias" ? "selected" : "" }}>Últimos 30 dias</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="campo-data-inicio" class="block text-sm font-medium mb-1">Data Início:</label>
-                        <input type="date" name="inicio" id="campo-data-inicio" value="{{ $dadosRelatorio["filtro_inicio"] ?? "" }}" class="campo-formulario">
-                    </div>
-                    <div>
-                        <label for="campo-data-fim" class="block text-sm font-medium mb-1">Data Fim:</label>
-                        <input type="date" name="fim" id="campo-data-fim" value="{{ $dadosRelatorio["filtro_fim"] ?? "" }}" class="campo-formulario">
-                    </div>
+        {{-- Status e Resumo --}}
+        <div class="max-w-5xl mx-auto mb-6 slide-in-up" style="animation-delay: 0.1s">
+            <div class="status-card" style="border-left-color: {{ $status_co2['cor'] }};">
+                <div class="status-icon" style="color: {{ $status_co2['cor'] }};">
+                    <i class="fas {{ $status_co2['icone'] }}"></i>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="botao-primario">Aplicar Filtros</button>
+                <div class="status-title" style="color: {{ $status_co2['cor'] }};">
+                    {{ $status_co2['texto'] }}
                 </div>
-            </form>
+                <div class="status-description">
+                    {{ $status_co2['descricao'] }}
+                </div>
+            </div>
         </div>
 
-        {{-- Container para os Cartões de Resumo (centralizado) --}}
+        {{-- Container para os Cartões de Resumo --}}
         <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="cartao-relatorio text-center">
-                    <h3 class="text-lg font-semibold mb-2">CO₂ Consumido Total</h3>
-                    <p class="texto-valor-principal text-red-600">{{ $dadosRelatorio["co2_consumido_total"] ?? "N/A" }} kg</p>
+            <div class="grid-container mb-6">
+                <div class="grid-item cartao-relatorio text-center danger slide-in-left" style="animation-delay: 0.2s">
+                    <div class="content-aligned">
+                        <h3 class="text-lg font-semibold mb-2">CO₂ Consumido Total</h3>
+                        <p class="texto-valor-principal">{{ $co2_consumido ?? "N/A" }} <span style="font-size: 0.6em;">kg</span></p>
+                    </div>
                 </div>
-                <div class="cartao-relatorio text-center">
-                    <h3 class="text-lg font-semibold mb-2">Meta de CO₂</h3>
-                    <p class="texto-valor-principal text-green-600">{{ $dadosRelatorio["co2_meta"] ?? "N/A" }} kg</p>
+                <div class="grid-item cartao-relatorio text-center primary slide-in-left" style="animation-delay: 0.3s">
+                    <div class="content-aligned">
+                        <h3 class="text-lg font-semibold mb-2">Meta de CO₂</h3>
+                        <p class="texto-valor-secundario">{{ $co2_meta ?? "N/A" }} <span style="font-size: 0.6em;">kg</span></p>
+                    </div>
                 </div>
-                <div class="cartao-relatorio text-center">
-                    <h3 class="text-lg font-semibold mb-2">Avaliação VerdeCalc</h3>
-                    <p class="texto-valor-secundario">{{ $dadosRelatorio["avaliacao_verdecalk"] ?? "N/A" }}</p>
-                    <p class="text-xs text-gray-500 mt-2">(Excelente: &lt;=80%, Bom: &lt;=100%, Regular: &lt;=120%, Ruim: &gt;120%)</p>
-                </div>
-                <div class="cartao-relatorio text-center">
-                    <h3 class="text-lg font-semibold mb-2">Data da Análise</h3>
-                    <p class="texto-valor-terciario">{{ $dadosRelatorio["data_analise"] ?? "N/A" }}</p>
-                    <p class="text-sm text-gray-500 mt-1">Período: {{ Carbon\Carbon::parse($dadosRelatorio["filtro_inicio"] ?? now())->format("d/m/Y") }} a {{ Carbon\Carbon::parse($dadosRelatorio["filtro_fim"] ?? now())->format("d/m/Y") }}</p>
+                <div class="grid-item cartao-relatorio text-center warning slide-in-left" style="animation-delay: 0.4s">
+                    <div class="content-aligned">
+                        <h3 class="text-lg font-semibold mb-2">Percentual da Meta</h3>
+                        <p class="texto-valor-terciario">{{ $percentual_meta ?? "N/A" }}<span style="font-size: 0.6em;">%</span></p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        {{-- Data da Análise --}}
+        <div class="max-w-5xl mx-auto mb-6">
+            <div class="cartao-relatorio primary slide-in-up" style="animation-delay: 0.5s">
+                <div class="flex items-center">
+                    <div class="mr-4" style="color: var(--color-primary);">
+                        <i class="fas fa-calendar-alt fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-1">Data da Análise</h3>
+                        <p class="text-2xl font-bold">{{ $data_registro ?? "N/A" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Impacto Ambiental Equivalente --}}
+        <div class="max-w-5xl mx-auto cartao-relatorio mb-6 secondary slide-in-up" style="animation-delay: 0.6s">
+            <h2 class="titulo-cartao-relatorio">
+                <i class="fas fa-leaf"></i>
+                Impacto Ambiental Equivalente
+            </h2>
+            <div class="grid-container mt-4">
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="spacing-y-2">
+                        <div class="text-xl font-bold">{{ $impacto_ambiental['arvores_necessarias'] ?? 0 }} árvores</div>
+                        <div class="text-sm text-gray-600">necessárias para absorver essa quantidade de CO₂ em um ano</div>
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="spacing-y-2">
+                        <div class="text-xl font-bold">{{ $impacto_ambiental['km_carro'] ?? 0 }} km</div>
+                        <div class="text-sm text-gray-600">percorridos por um carro médio</div>
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="spacing-y-2">
+                        <div class="text-xl font-bold">{{ $impacto_ambiental['meses_energia_casa'] ?? 0 }} meses</div>
+                        <div class="text-sm text-gray-600">de consumo de energia de uma residência média</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Métricas Avançadas --}}
+        <div class="max-w-5xl mx-auto cartao-relatorio mb-6 primary slide-in-up" style="animation-delay: 0.7s">
+            <h2 class="titulo-cartao-relatorio">
+                <i class="fas fa-chart-line"></i>
+                Métricas Avançadas
+            </h2>
+            <div class="grid-container mt-4">
+                <div class="grid-item metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="metric-content spacing-y-2">
+                        <div class="metric-title">Intensidade de Carbono</div>
+                        <div class="metric-value">{{ $intensidade_carbono ?? "N/A" }} kg CO₂/unidade</div>
+                        <div class="metric-description">
+                            Emissão de CO₂ por unidade produzida
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="metric-content spacing-y-2">
+                        <div class="metric-title">Pontuação de Sustentabilidade</div>
+                        <div class="metric-value">{{ $pontuacao ?? "N/A" }} / 100</div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: {{ min(100, $pontuacao ?? 0) }}%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title mt-6">Emissão por Fonte</div>
+            <div class="grid-container">
+                <div class="grid-item metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="metric-content spacing-y-2">
+                        <div class="metric-title">Transporte</div>
+                        <div class="metric-value">{{ $emissao_transporte ?? "N/A" }} kg</div>
+                    </div>
+                </div>
+                <div class="grid-item metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="metric-content spacing-y-2">
+                        <div class="metric-title">Energia Elétrica</div>
+                        <div class="metric-value">{{ $emissao_energia ?? "N/A" }} kg</div>
+                    </div>
+                </div>
+                <div class="grid-item metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="metric-content spacing-y-2">
+                        <div class="metric-title">Produção Industrial/Serviços</div>
+                        <div class="metric-value">{{ $emissao_producao ?? "N/A" }} kg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Dicas de Redução --}}
+        <div class="max-w-5xl mx-auto cartao-relatorio mb-6 secondary slide-in-up" style="animation-delay: 0.8s">
+            <h2 class="titulo-cartao-relatorio">
+                <i class="fas fa-lightbulb"></i>
+                Dicas para Redução de Emissões
+            </h2>
+            <div style="background-color: #f9fafb; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid var(--color-secondary);">
+                <p class="flex items-center" style="color: var(--color-text-medium);">
+                    <i class="fas fa-info-circle mr-2" style="color: var(--color-secondary);"></i>
+                    Sua principal fonte de emissão é: <strong class="ml-2" style="color: var(--color-secondary);">{{ $fonte_emissao }}</strong>
+                </p>
+            </div>
+            
+            <div class="spacing-y-4">
+                @foreach($dicas_reducao as $dica)
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>{{ $dica }}</div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        
         {{-- Cartão do Gráfico --}}
-        <div class="max-w-4xl mx-auto cartao-relatorio">
-            <h2 class="titulo-cartao-relatorio">Gráfico: Consumo de CO₂ vs Meta</h2>
-            <div style="height: 400px; width: 100%;">
-                <canvas id="grafico-consumo-meta"></canvas>
+        <div class="max-w-5xl mx-auto cartao-relatorio mb-6 primary slide-in-up" style="animation-delay: 0.5s">
+            <h2 class="titulo-cartao-relatorio">
+                <i class="fas fa-chart-pie"></i>
+                Desempenho em Relação à Meta
+            </h2>
+            <div style="height: 300px; width: 100%; position: relative; display: flex; justify-content: center; align-items: center;">
+                <div class="gauge-container" style="width: 300px; height: 300px; position: relative;">
+                    <canvas id="grafico-gauge" width="300" height="300"></canvas>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="text-lg" style="color: var(--color-text-medium);">
+                    @if($percentual_meta > 100)
+                        Você precisa reduzir <strong style="color: {{ $status_co2['cor'] }};">{{ $reducao_necessaria }} kg</strong> de CO₂ para atingir sua meta.
+                    @else
+                        Parabéns! Você está <strong style="color: {{ $status_co2['cor'] }};">{{ 100 - $percentual_meta }}%</strong> abaixo da sua meta de emissão.
+                    @endif
+                </p>
             </div>
         </div>
-
     </div>
 </div>
+
+<script>
+    // Injeta os dados do relatório para uso no JavaScript
+    window.dadosGrafico = {
+        percentualMeta: {{ $percentual_meta ?? 0 }},
+        statusCor: "{{ $status_co2['cor'] ?? '#ef4444' }}"
+    };
+</script>
 @endsection
 
 @push("scripts")
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Injeta os dados do gráfico do PHP para o JavaScript
-        window.graficoDadosParaPagina = {
-            labels: @json($dadosGrafico["labels"] ?? []),
-            consumoData: @json($dadosGrafico["consumo"] ?? []),
-            metaData: @json($dadosGrafico["meta"] ?? [])
-        };
-
-        document.addEventListener("DOMContentLoaded", function() {
-            if (typeof window.inicializarGraficoConsumoVsMeta === "function" && window.graficoDadosParaPagina) {
-                window.inicializarGraficoConsumoVsMeta(
-                    window.graficoDadosParaPagina.labels,
-                    window.graficoDadosParaPagina.consumoData,
-                    window.graficoDadosParaPagina.metaData
-                );
-            } else {
-                console.warn("Função inicializarGraficoConsumoVsMeta ou dados do gráfico não encontrados.");
-            }
-        });
-    </script>
-    <script src="{{ asset("js/relatorio.js") }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="{{ asset('js/relatorio.js') }}"></script>
 @endpush
-
-
-

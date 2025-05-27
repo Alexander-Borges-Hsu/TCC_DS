@@ -1,118 +1,164 @@
-// Chart.js é carregado via CDN, então não há importação aqui.
+// Chart.js é carregado via CDN no layout principal
 
 /**
- * Inicializa o gráfico de Consumo vs Meta.
- * @param {string[]} labels - As etiquetas para o eixo X (datas).
- * @param {number[]} consumoData - Os dados de consumo de CO2.
- * @param {number[]} metaData - Os dados da meta de CO2.
+ * Inicializa o gráfico gauge que mostra o percentual da meta
+ * @param {string} canvasId - ID do elemento canvas
+ * @param {number} percentual - Percentual da meta (0-100)
+ * @param {string} corStatus - Cor do status (hexadecimal)
  */
-function initConsumoMetaChart(labels, consumoData, metaData) {
-    const chartCanvas = document.getElementById("grafico-consumo-meta"); // ID humanizado: grafico-consumo-meta
-    if (chartCanvas) {
-        if (typeof Chart === "undefined") {
-            console.error("Chart.js não foi carregado. Verifique a inclusão do CDN.");
-            return;
-        }
-
-        // Se os dados não forem passados como argumentos, tenta pegar do dataset (fallback)
-        // No entanto, a abordagem atual é passar via window.graficoDadosParaPagina no Blade.
-        const finalLabels = labels && labels.length > 0 ? labels : JSON.parse(chartCanvas.dataset.labels || "[]");
-        const finalConsumoData = consumoData && consumoData.length > 0 ? consumoData : JSON.parse(chartCanvas.dataset.consumo || "[]");
-        const finalMetaData = metaData && metaData.length > 0 ? metaData : JSON.parse(chartCanvas.dataset.meta || "[]");
-
-        try {
-            const ctx = chartCanvas.getContext("2d");
-            new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: finalLabels,
-                    datasets: [
-                        {
-                            label: "Consumo CO₂ (kg)",
-                            data: finalConsumoData,
-                            borderColor: "rgb(220, 38, 38)", // Vermelho vivo (Tailwind red-600)
-                            backgroundColor: "rgba(220, 38, 38, 0.1)", // Vermelho mais claro para área
-                            tension: 0.1,
-                            pointBackgroundColor: "rgb(220, 38, 38)",
-                            pointBorderColor: "#fff",
-                            pointHoverBackgroundColor: "#fff",
-                            pointHoverBorderColor: "rgb(220, 38, 38)"
-                        },
-                        {
-                            label: "Meta CO₂ (kg)",
-                            data: finalMetaData,
-                            borderColor: "rgb(22, 163, 74)", // Verde escuro (Tailwind green-600)
-                            backgroundColor: "rgba(22, 163, 74, 0.1)", // Verde mais claro para área
-                            borderDash: [5, 5],
-                            tension: 0.1,
-                            pointBackgroundColor: "rgb(22, 163, 74)",
-                            pointBorderColor: "#fff",
-                            pointHoverBackgroundColor: "#fff",
-                            pointHoverBorderColor: "rgb(22, 163, 74)"
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true, // O gráfico se ajustará ao tamanho do contêiner
-                    maintainAspectRatio: false, // Permite que a altura definida no contêiner seja respeitada
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: "rgba(0, 0, 0, 0.1)" // Linhas de grade mais claras para tema claro
-                            },
-                            ticks: {
-                                color: "#1f2937" // Cor do texto dos ticks (Tailwind gray-800)
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false // Remove linhas de grade do eixo X para um visual mais limpo
-                            },
-                            ticks: {
-                                color: "#1f2937" // Cor do texto dos ticks
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: "#1f2937" // Cor do texto da legenda
-                            }
-                        }
-                    }
-                }
-            });
-        } catch (e) {
-            console.error("Erro ao inicializar ou renderizar o gráfico:", e);
-        }
+function inicializarGraficoGauge(canvasId, percentual, corStatus) {
+    console.log("Inicializando gráfico gauge com:", { canvasId, percentual, corStatus });
+    
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) {
+        console.error(`Canvas com ID ${canvasId} não encontrado`);
+        return;
     }
+    
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = Math.min(centerX, centerY) * 0.8;
+    
+    // Limpar o canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Desenhar o arco de fundo (cinza claro)
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI, false);
+    ctx.lineWidth = 16;
+    ctx.strokeStyle = '#e5e7eb';
+    ctx.stroke();
+    
+    // Definir as zonas de cores
+    const zonas = [
+        { limite: 40, cor: '#22c55e' },  // Verde (Excelente)
+        { limite: 70, cor: '#84cc16' },  // Verde-amarelado (Bom)
+        { limite: 90, cor: '#f59e0b' },  // Amarelo (Regular)
+        { limite: 100, cor: '#ef4444' }  // Vermelho (Ruim)
+    ];
+    
+    // Desenhar as zonas coloridas
+    let startAngle = Math.PI;
+    zonas.forEach((zona) => {
+        const endAngle = Math.PI + (zona.limite / 100) * Math.PI;
+        
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle, false);
+        ctx.lineWidth = 16;
+        ctx.strokeStyle = zona.cor + '90'; // Adiciona transparência
+        ctx.stroke();
+        
+        startAngle = endAngle;
+    });
+    
+    // Calcular o ângulo do ponteiro baseado no percentual (limitado a 100%)
+    const needleAngle = Math.PI + (Math.min(percentual, 100) / 100) * Math.PI;
+    
+    // Desenhar o ponteiro
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(needleAngle);
+    
+    // Linha do ponteiro
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(radius * 0.8, 0);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#1f2937';
+    ctx.stroke();
+    
+    // Círculo central
+    ctx.beginPath();
+    ctx.arc(0, 0, 8, 0, 2 * Math.PI);
+    ctx.fillStyle = '#1f2937';
+    ctx.fill();
+    
+    ctx.restore();
+    
+    // Desenhar o texto do percentual
+    ctx.font = 'bold 32px "Inter", sans-serif';
+    ctx.fillStyle = corStatus;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(percentual + '%', centerX, centerY + radius * 0.5);
+    
+    // Desenhar as marcações de percentual
+    const marcacoes = [0, 25, 50, 75, 100];
+    marcacoes.forEach(marca => {
+        const marcaAngle = Math.PI + (marca / 100) * Math.PI;
+        const x1 = centerX + (radius - 25) * Math.cos(marcaAngle);
+        const y1 = centerY + (radius - 25) * Math.sin(marcaAngle);
+        const x2 = centerX + (radius + 5) * Math.cos(marcaAngle);
+        const y2 = centerY + (radius + 5) * Math.sin(marcaAngle);
+        
+        // Linha da marcação
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#9ca3af';
+        ctx.stroke();
+        
+        // Texto da marcação
+        const textX = centerX + (radius + 25) * Math.cos(marcaAngle);
+        const textY = centerY + (radius + 25) * Math.sin(marcaAngle);
+        ctx.font = '12px "Inter", sans-serif';
+        ctx.fillStyle = '#4b5563';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(marca + '%', textX, textY);
+    });
 }
 
-function imprimirRelatorio() {
-    document.body.classList.add("print-mode");
-    window.print();
-    // Adiciona um pequeno atraso para remover a classe após a impressão ser provavelmente concluída ou cancelada.
-    // Isso ajuda a restaurar os estilos normais da página.
-    setTimeout(() => { document.body.classList.remove("print-mode"); }, 500);
-}
+// Inicializar os gráficos quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM carregado, inicializando gráficos...");
+    
+    // Verificar se temos os dados necessários
+    if (window.dadosGrafico) {
+        console.log("Dados do gráfico disponíveis:", window.dadosGrafico);
+        
+        // Inicializar o gráfico gauge
+        if (document.getElementById('grafico-gauge')) {
+            inicializarGraficoGauge('grafico-gauge', window.dadosGrafico.percentualMeta, window.dadosGrafico.statusCor);
+        } else {
+            console.error("Elemento canvas 'grafico-gauge' não encontrado");
+        }
+    } else {
+        console.error("Dados do gráfico não disponíveis");
+    }
 
-// Torna as funções globalmente acessíveis para serem chamadas pelo HTML (onclick) ou por outros scripts.
-window.solicitarImpressaoDoRelatorio = imprimirRelatorio; // Nome humanizado usado no Blade
-window.inicializarGraficoConsumoVsMeta = initConsumoMetaChart; // Nome humanizado usado no Blade
-
-// A inicialização do gráfico agora é chamada pelo script inline no arquivo Blade,
-// que passa os dados diretamente para window.inicializarGraficoConsumoVsMeta.
-// O script no Blade que faz a chamada:
-// document.addEventListener("DOMContentLoaded", function() {
-//     if (window.graficoDadosParaPagina) {
-//         window.inicializarGraficoConsumoVsMeta(
-//             window.graficoDadosParaPagina.rotulos,
-//             window.graficoDadosParaPagina.consumo,
-//             window.graficoDadosParaPagina.meta
-//         );
-//     } else {
-//         console.warn("Dados do gráfico (window.graficoDadosParaPagina) não encontrados.");
-//     }
-// });
-
+    // Adicionar efeitos de animação para elementos ao scroll
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.cartao-relatorio, .impact-card, .metric-card, .tip-card');
+        
+        elements.forEach(element => {
+            const position = element.getBoundingClientRect();
+            
+            // Se o elemento estiver visível na tela
+            if(position.top < window.innerHeight - 100 && position.bottom >= 0) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // Configurar elementos para animação
+    document.querySelectorAll('.cartao-relatorio, .impact-card, .metric-card, .tip-card').forEach(element => {
+        if (!element.classList.contains('slide-in-left') && 
+            !element.classList.contains('slide-in-right') && 
+            !element.classList.contains('slide-in-up') && 
+            !element.classList.contains('fade-in')) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        }
+    });
+    
+    // Executar uma vez ao carregar
+    setTimeout(animateOnScroll, 100);
+    
+    // Adicionar ao evento de scroll
+    window.addEventListener('scroll', animateOnScroll);
+});
