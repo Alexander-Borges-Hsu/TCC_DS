@@ -51,6 +51,44 @@
             </div>
         </div>
 
+        {{-- Meta Contextualizada - NOVO BLOCO --}}
+        <div class="max-w-5xl mx-auto mb-6">
+            <div class="cartao-relatorio primary slide-in-up" style="animation-delay: 0.45s; border-left: 4px solid #3b82f6;">
+                <h2 class="titulo-cartao-relatorio">
+                    <i class="fas fa-bullseye"></i>
+                    Meta Personalizada para sua Empresa
+                </h2>
+                <div class="p-4 bg-blue-50 rounded-lg mb-4">
+                    <p class="text-gray-700">{!! $meta_contextualizada['explicacao'] ?? "Sua meta foi personalizada com base no contexto da sua empresa." !!}</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-building mr-2 text-blue-500"></i>
+                            <h3 class="font-semibold">Setor</h3>
+                        </div>
+                        <p class="text-gray-700">{{ ucfirst($meta_contextualizada['info']['fatores']['setor'] ?? 'Não informado') }}</p>
+                    </div>
+                    
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-users mr-2 text-blue-500"></i>
+                            <h3 class="font-semibold">Porte da Empresa</h3>
+                        </div>
+                        <p class="text-gray-700">{{ ucfirst($meta_contextualizada['info']['fatores']['porte'] ?? 'Não informado') }}</p>
+                    </div>
+                </div>
+                
+                <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                    <p class="text-sm text-gray-600">
+                        <i class="fas fa-info-circle mr-1 text-blue-500"></i>
+                        Sua meta é atualizada anualmente com redução de {{ $meta_contextualizada['info']['reducao_anual'] ?? '4.2' }}% para alinhar-se com os objetivos climáticos globais.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         {{-- Data da Análise --}}
         <div class="max-w-5xl mx-auto mb-6">
             <div class="cartao-relatorio primary slide-in-up" style="animation-delay: 0.5s">
