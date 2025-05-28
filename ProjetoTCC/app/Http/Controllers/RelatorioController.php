@@ -384,7 +384,6 @@ class RelatorioController extends Controller
     public function exportarPDF()
     {
         // Implementação da exportação PDF
-        // (mantida a implementação original)
-        return redirect()->back()->with('info', 'Funcionalidade de exportação em desenvolvimento.');
+        return redirect()->back()->with('info', 'Exportação em PDF será implementada em breve.');
     }
 }
