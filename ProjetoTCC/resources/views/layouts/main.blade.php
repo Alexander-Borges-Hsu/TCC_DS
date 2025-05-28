@@ -24,6 +24,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VerdeCalc</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="icon" href="/imagens/imagem.png">
     <link rel="stylesheet" href="/css/styleFooter.css">
     <link rel="stylesheet" href="/css/styleTelaInicial.css">
@@ -88,6 +92,15 @@
         <script src="{{ asset("assets/js/main.js") }}"></script> 
         @stack("scripts") {{-- Adicionado para scripts específicos da página --}}
         @include('layouts.carregamento') {{-- Tela de carregamento --}}
+
+    <script>
+    if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/serviceworker.js')
+    .then(reg => console.log('Service Worker registrado com sucesso:', reg))
+    .catch(err => console.warn('Erro ao registrar o Service Worker:', err));
+    }
+</script>
+
 </body>
 </html>
 
