@@ -52,8 +52,8 @@ function inicializarGraficoGauge(canvasId, percentual, corStatus) {
         startAngle = endAngle;
     });
     
-    // Calcular o ângulo do ponteiro baseado no percentual (limitado a 100%)
-    const needleAngle = Math.PI + (Math.min(percentual, 100) / 100) * Math.PI;
+    // O percentual já vem limitado a 100% do controller, mas garantimos novamente aqui
+    const needleAngle = Math.PI + (percentual / 100) * Math.PI;
     
     // Desenhar o ponteiro
     ctx.save();

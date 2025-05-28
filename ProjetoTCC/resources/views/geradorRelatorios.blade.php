@@ -45,7 +45,7 @@
                 <div class="grid-item cartao-relatorio text-center warning slide-in-left" style="animation-delay: 0.4s">
                     <div class="content-aligned">
                         <h3 class="text-lg font-semibold mb-2">Percentual da Meta</h3>
-                        <p class="texto-valor-terciario">{{ $percentual_meta ?? "N/A" }}<span style="font-size: 0.6em;">%</span></p>
+                        <p class="texto-valor-terciario">{{ number_format($percentual_meta ?? 0, 2, '.', '') }}<span style="font-size: 0.6em;">%</span></p>
                     </div>
                 </div>
             </div>
@@ -206,10 +206,10 @@
             </div>
             <div class="text-center mt-4">
                 <p class="text-lg" style="color: var(--color-text-medium);">
-                    @if($percentual_meta > 100)
+                    @if($percentual_meta == 100)
                         Você precisa reduzir <strong style="color: {{ $status_co2['cor'] }};">{{ $reducao_necessaria }} kg</strong> de CO₂ para atingir sua meta.
                     @else
-                        Parabéns! Você está <strong style="color: {{ $status_co2['cor'] }};">{{ 100 - $percentual_meta }}%</strong> abaixo da sua meta de emissão.
+                        <strong style="color: {{ $status_co2['cor'] }};">{{ number_format($percentual_meta, 2, '.', '') }}%</strong> das suas ações impactam o meio ambiente.
                     @endif
                 </p>
             </div>
@@ -220,7 +220,7 @@
 <script>
     // Injeta os dados do relatório para uso no JavaScript
     window.dadosGrafico = {
-        percentualMeta: {{ $percentual_meta ?? 0 }},
+        percentualMeta: {{ number_format($percentual_meta ?? 0, 2, '.', '') }},
         statusCor: "{{ $status_co2['cor'] ?? '#ef4444' }}"
     };
 </script>

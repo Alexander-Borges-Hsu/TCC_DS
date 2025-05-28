@@ -1,175 +1,284 @@
-/* Estilos para a calculadora de emissão de CO₂ */
+/* Estilos para a calculadora de emissão de CO₂ - VerdeCalc */
 
-fieldset legend {
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.container {
+/* Estilos gerais da calculadora */
+.form-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.alert {
-    padding: 1rem;
+.titulo {
+    color: #2c3e50;
+    font-size: 2rem;
     margin-bottom: 1rem;
-    border-radius: 0.25rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.subtitulo-desc {
+    text-align: center;
+    color: #555;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.subtitulo {
+    color: #27ae60;
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+/* Estilos para seções do formulário */
+.form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Estilos para campos de formulário */
+.calc-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.calc-form input[type="text"],
+.calc-form input[type="number"],
+.calc-form select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.calc-form input[type="text"]:focus,
+.calc-form input[type="number"]:focus,
+.calc-form select:focus {
+    border-color: #27ae60;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
+}
+
+/* Estilos para grupos de botões */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.buttons input[type="radio"],
+.buttons input[type="checkbox"] {
+    display: none;
+}
+
+.buttons label {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: normal;
+    margin: 0;
+}
+
+.buttons input[type="radio"]:checked + label,
+.buttons input[type="checkbox"]:checked + label {
+    background-color: #27ae60;
+    color: white;
+    border-color: #27ae60;
+}
+
+.buttons label:hover {
+    background-color: #e9e9e9;
+}
+
+.buttons input[type="radio"]:checked + label:hover,
+.buttons input[type="checkbox"]:checked + label:hover {
+    background-color: #219653;
+}
+
+/* Estilos para grupos de entrada */
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+.input-group select {
+    width: 150px;
+}
+
+/* Estilos para caixas de informação */
+.info-box {
+    background-color: #e8f5e9;
+    border-left: 4px solid #27ae60;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.info-box p {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+/* Estilos para seção de informações */
+.info-section {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.info-section ul {
+    padding-left: 1.5rem;
+}
+
+.info-section li {
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para botão de envio */
+.botao-input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.botao-input:hover {
+    background-color: #219653;
+}
+
+/* Estilos para mensagens de alerta */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .alert-success {
-    background-color: #d1fae5;
-    color: #065f46;
-    border-left: 4px solid #10b981;
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
 }
 
 .alert-danger {
-    background-color: #fee2e2;
-    color: #b91c1c;
-    border-left: 4px solid #ef4444;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
 }
 
-.mb-4 {
-    margin-bottom: 1.5rem;
+/* Estilos para seção de fontes */
+.fontes-container {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
-.p-3 {
-    padding: 1rem;
-}
-
-.border {
-    border: 1px solid #e5e7eb;
-}
-
-.rounded {
-    border-radius: 0.25rem;
-}
-
-.w-auto {
-    width: auto;
-}
-
-.px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-}
-
-.h6 {
-    font-size: 1rem;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -0.75rem;
-    margin-left: -0.75rem;
-}
-
-.col-md-4, .col-md-6 {
-    position: relative;
-    width: 100%;
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
-}
-
-@media (min-width: 768px) {
-    .col-md-4 {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-    }
-    
-    .col-md-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
-
-.mb-3 {
-    margin-bottom: 1rem;
-}
-
-.form-label {
-    margin-bottom: 0.5rem;
-    display: inline-block;
-}
-
-.form-control, .form-select {
-    display: block;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-control:focus, .form-select:focus {
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
-.btn {
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-}
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
-}
-
-hr {
-    margin: 1.5rem 0;
-    color: inherit;
-    background-color: currentColor;
-    border: 0;
-    opacity: 0.25;
-}
-
-.mt-4 {
+.fontes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
     margin-top: 1.5rem;
 }
 
-h4 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    line-height: 1.2;
+.fonte-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-ul {
-    padding-left: 2rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
+.fonte-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-small {
-    font-size: 0.875em;
+.fonte-item h4 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.fonte-item p {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.fonte-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #27ae60;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.fonte-link:hover {
+    background-color: #219653;
+    text-decoration: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .fontes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .buttons label {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group select {
+        width: 100%;
+    }
 }

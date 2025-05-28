@@ -5,7 +5,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\SenhaController;
 use App\Http\Controllers\CalculadoraController;
 use App\Http\Controllers\RelatorioController;
-use App\Http\Controllers\IaController; // <-- Adicionado import para IA
+use App\Http\Controllers\IaController;
+use App\Http\Controllers\FormularioController; // Novo controller adicionado
 use Illuminate\Support\Facades\Auth;
 
 // Rotas públicas (acessíveis sem login)
@@ -29,6 +30,10 @@ Route::middleware(['auth'])->group(function () {
         return redirect('/');
     })->name('logout');
 
+    // Rotas do Formulário
+    Route::get('/formulario', [FormularioController::class, 'index'])->name('formulario.index');
+    Route::post('/formulario', [FormularioController::class, 'store'])->name('formulario.store');
+
     // Rotas da Calculadora
     Route::get('/calculadora', [CalculadoraController::class, 'index'])->name('calculadora.index');
     Route::post('/calculadora/calcular', [CalculadoraController::class, 'calcular'])->name('calculadora.calcular');
@@ -40,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
     // Rotas da IA (integradas do TCC_DS3)
     Route::get('/ia', function() { return view('ia'); })->name('ia.index');
     Route::post('/ia/perguntar', [IaController::class, 'ask'])->name('ia.perguntar');
+
+    // Rota da página Sobre Nós
+    Route::get('/sobre', function() { return view('sobre'); })->name('sobre.index');
 
     // Suas outras rotas autenticadas (se houver)
     // Exemplo: Rota para navegar (se precisar de auth)
