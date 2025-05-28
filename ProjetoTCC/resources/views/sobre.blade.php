@@ -24,14 +24,14 @@
                     <p>Acreditamos que a transformação ambiental começa com dados precisos e ações concretas. Por isso, desenvolvemos uma plataforma que não apenas quantifica as emissões, mas também orienta as empresas em sua jornada rumo à sustentabilidade.</p>
                 </div>
                 <div class="mission-image">
-                    <img src="https://images.unsplash.com/photo-1623000850756-f41458ab7d3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Missão VerdeCalc">
+                    <img src="imagens/missao_verdecalc_sustentabilidade.jpeg" alt="Missão VerdeCalc" class="mission-img">
                 </div>
             </div>
             
             <div class="values-container">
                 <div class="value-item">
                     <div class="value-icon">
-                        <i class="fas fa-leaf"></i>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3004/3004991.png" alt="Sustentabilidade" class="value-logo">
                     </div>
                     <div class="value-text">
                         <h4>Sustentabilidade</h4>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="value-item">
                     <div class="value-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2784/2784403.png" alt="Precisão" class="value-logo">
                     </div>
                     <div class="value-text">
                         <h4>Precisão</h4>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="value-item">
                     <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995515.png" alt="Inovação" class="value-logo">
                     </div>
                     <div class="value-text">
                         <h4>Inovação</h4>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="value-item">
                     <div class="value-icon">
-                        <i class="fas fa-hands-helping"></i>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3176/3176298.png" alt="Acessibilidade" class="value-logo">
                     </div>
                     <div class="value-text">
                         <h4>Acessibilidade</h4>
@@ -66,33 +66,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Impact Section -->
-    <section class="section impact-section sobre-nos-section fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nosso Impacto</h2>
-            </div>
-            <p class="text-center">A VerdeCalc está transformando a maneira como as empresas abordam a sustentabilidade, proporcionando resultados mensuráveis:</p>
-            
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-text">das empresas que utilizam nossa plataforma conseguem reduzir suas emissões de CO₂ em até 30% no primeiro ano</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">62%</div>
-                    <div class="stat-text">das organizações reportam economia financeira significativa após implementar as recomendações da VerdeCalc</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">90%</div>
-                    <div class="stat-text">dos usuários corporativos consideram nossa plataforma essencial para suas estratégias de sustentabilidade</div>
-                </div>
-            </div>
-            
-            <p class="text-center">Estes números refletem nosso compromisso em fornecer soluções eficazes que beneficiam tanto as empresas quanto o meio ambiente.</p>
         </div>
     </section>
     
@@ -180,30 +153,6 @@
                     <h3 class="feature-title">Recomendações Personalizadas</h3>
                     <p>Com base nos seus dados, oferecemos sugestões práticas e viáveis para reduzir as emissões de carbono da sua empresa.</p>
                 </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3 class="feature-title">Certificação</h3>
-                    <p>Empresas que atingem metas de redução podem receber certificados digitais para demonstrar seu compromisso com a sustentabilidade.</p>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="feature-title">Comunidade</h3>
-                    <p>Acesso a uma rede de empresas comprometidas com a sustentabilidade, facilitando a troca de experiências e melhores práticas.</p>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="feature-title">Recursos Educativos</h3>
-                    <p>Biblioteca de conteúdos sobre sustentabilidade empresarial, legislação ambiental e tendências do mercado.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -225,7 +174,6 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/sobre_nos.css') }}">
-<link rel="stylesheet" href="{{ asset('css/sobre_nos_nav.css') }}">
 @endpush
 
 @push('scripts')

@@ -12,38 +12,43 @@
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-* {
+.sobre-nos-container * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+.sobre-nos-container {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
     background-color: var(--background-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
+.sobre-nos-container h1, 
+.sobre-nos-container h2, 
+.sobre-nos-container h3, 
+.sobre-nos-container h4, 
+.sobre-nos-container h5, 
+.sobre-nos-container h6 {
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--dark-color);
 }
 
-p {
+.sobre-nos-container p {
     margin-bottom: 20px;
     font-size: 1.1rem;
 }
 
-.container {
+.sobre-nos-container .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-.btn {
+.sobre-nos-container .btn {
     display: inline-block;
     background-color: var(--primary-color);
     color: var(--light-color);
@@ -57,7 +62,7 @@ p {
     margin-top: 20px;
 }
 
-.btn:hover {
+.sobre-nos-container .btn:hover {
     background-color: transparent;
     color: var(--primary-color);
 }
@@ -138,12 +143,17 @@ p {
     flex: 1;
     min-width: 300px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mission-image img {
     max-width: 100%;
+    max-height: 350px;
     border-radius: 10px;
     box-shadow: var(--shadow);
+    object-fit: cover;
 }
 
 .values-container {
@@ -163,14 +173,21 @@ p {
 .value-icon {
     background-color: var(--primary-color);
     color: var(--light-color);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 15px;
     flex-shrink: 0;
+    overflow: hidden;
+}
+
+.value-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
 }
 
 .value-text h4 {
@@ -329,45 +346,7 @@ p {
     .stat-item, .feature-item {
         flex-basis: calc(50% - 20px);
     }
-    .sobre-nos-link {
-    background-color: #1a1a2e;
-    color: white !important;
-    padding: 8px 15px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
 }
-
-.sobre-nos-link i {
-    margin-right: 5px;
-}
-
-.sobre-nos-link:hover {
-    background-color: #16213e;
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-}
-
-/* Animação para os itens de estatísticas */
-.stat-item.animated {
-    animation: fadeInUp 0.5s ease forwards;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-}
-
-
 
 @media (max-width: 767px) {
     .hero-content h1 {
