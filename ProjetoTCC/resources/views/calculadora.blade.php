@@ -38,8 +38,8 @@
             <input type="number" step="0.1" id="distancia" name="distancia" value="{{ old('distancia') }}" placeholder="Distância em km por mês" required>
             <br>
             <br>
-            <label for="consumo_combustivel">Qual o consumo médio de combustível (L/100km)?</label>
-            <input type="number" step="0.1" id="consumo_combustivel" name="consumo_combustivel" value="{{ old('consumo_combustivel') }}" placeholder="Consumo em litros por 100km" required>
+            <label for="consumo_combustivel">Qual o consumo médio de combustível (L/mês)?</label>
+            <input type="number" step="0.1" id="consumo_combustivel" name="consumo_combustivel" value="{{ old('consumo_combustivel') }}" placeholder="Consumo em litros por km's rodado no mês" required>
             <br>
             <br>
             <label for="tipo_combustivel">Qual o tipo de combustível mais utilizado?</label>
@@ -55,8 +55,8 @@
 
         <div class="form-section">
             <h3 class="subtitulo">Energia Elétrica</h3>
-            <label for="consumo_energia">Qual o consumo médio mensal de energia elétrica (kWh/mês)?</label>
-            <input type="number" step="0.1" id="consumo_energia" name="consumo_energia" value="{{ old('consumo_energia') }}" placeholder="Consumo em kWh por mês">
+            <label for="consumo_energia">Qual o consumo médio mensal de energia elétrica (R$/mês)?</label>
+            <input type="number" step="0.1" id="consumo_energia" name="consumo_energia" value="{{ old('consumo_energia') }}" placeholder="Consumo em R$ por mês">
             <div class="info-box">
                 <p>Você pode encontrar esta informação na sua conta de energia elétrica mensal.</p>
             </div>
