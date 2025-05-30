@@ -31,7 +31,7 @@
     <body>
     <div class="container" id="container">
         <div class="formulario-container registro">
-            <form action="/events" method="POST" id="form-cadastro" onsubmit="mostrarTelaCarregando()">
+            <form action="" method="POST" id="form-cadastro" onsubmit="mostrarTelaCarregando()">
                 
                 @csrf
                 <h1>Crie sua conta</h1>

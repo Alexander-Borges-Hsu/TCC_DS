@@ -106,7 +106,8 @@ class EventController extends Controller
 
     //Método para fazer o cadastro
     public function store(Request $request){
-
+        \Log::error('Log de teste');
+        
         $validator = Validator::make($request->all(), [
             "nome"     => "required|string|max:255",
             "email"    => "required|string|unique:usuarios,email",
