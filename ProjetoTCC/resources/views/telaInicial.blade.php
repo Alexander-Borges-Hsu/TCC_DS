@@ -21,7 +21,9 @@
 
 @extends('layouts.main')
 @section('content')
-<video src="/imagens/back-video-compressed.mp4" autoplay loop playsinline muted></video>
+<video autoplay muted loop playsinline>
+ <source src="{{ asset('imagens/back-video-compressed.mp4') }}" type="video/mp4">
+ </video>
 <header>
     <h1>Bem-vindo à <span>VerdeCalc</span></h1>
 </header>
@@ -38,4 +40,32 @@
     </div>
 </main>
 
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const navMenu = document.getElementById("nav-menu");
+        const navToggle = document.getElementById("nav-toggle");
+        const navClose = document.getElementById("nav-close");
+
+        // Abre o menu
+        if (navToggle) {
+            navToggle.addEventListener("click", () => {
+                navMenu.classList.add("show");
+            });
+        }
+
+        // Fecha o menu
+        if (navClose) {
+            navClose.addEventListener("click", () => {
+                navMenu.classList.remove("show");
+            });
+        }
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll(".nav__link").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("show");
+            });
+        });
+    });
+</script>
 @endsection
