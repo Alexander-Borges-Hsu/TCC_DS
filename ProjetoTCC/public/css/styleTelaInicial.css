@@ -8,15 +8,38 @@ body {
   color: #fff;
 }
 
-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1; 
+.video-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
 }
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+.bg-image-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+
+
 
 header {
   display: flex;
@@ -137,4 +160,14 @@ header span {
     padding: 6px 10px;
   }
 }
+
+@media (max-width: 768px) {
+    .bg-video {
+        display: none;
+    }
+    .bg-image-mobile {
+        display: block;
+    }
+}
+
 

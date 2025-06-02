@@ -21,9 +21,13 @@
 
 @extends('layouts.main')
 @section('content')
-<video autoplay muted loop playsinline>
- <source src="{{ asset('imagens/back-video-compressed.mp4') }}" type="video/mp4">
- </video>
+ <div class="video-wrapper">
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="{{ asset('imagens/back-video-compressed.mp4') }}" type="video/mp4">
+    </video>
+    <img src="{{ asset('imagens/background-senha.jpg') }}" alt="Fundo para mobile" class="bg-image-mobile">
+</div>
+
 <header>
     <h1>Bem-vindo à <span>VerdeCalc</span></h1>
 </header>
