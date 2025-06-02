@@ -22,9 +22,10 @@
 @extends('layouts.main')
 @section('content')
  <div class="video-wrapper">
-    <video autoplay muted loop playsinline class="bg-video">
+    <!-- <video autoplay muted loop playsinline class="bg-video">
         <source src="{{ asset('imagens/back-video-compressed.mp4') }}" type="video/mp4">
-    </video>
+    </video> -->
+    <img src="{{ asset('imagens/back-video-compressed.gif') }}" alt="" style="width:100%; height:100%;">
     <img src="{{ asset('imagens/background-senha.jpg') }}" alt="Fundo para mobile" class="bg-image-mobile">
 </div>
 
