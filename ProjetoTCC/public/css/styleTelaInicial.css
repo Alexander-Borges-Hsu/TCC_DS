@@ -6,6 +6,8 @@ body {
   font-family: 'Raleway', sans-serif;
   background-color: #000;
   color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 .video-wrapper {
@@ -38,9 +40,6 @@ body {
     display: none;
 }
 
-
-
-
 header {
   display: flex;
   flex-direction: column;
@@ -48,6 +47,7 @@ header {
   justify-content: center;
   text-align: center;
   padding: 50px 20px;
+  padding-top: 100px;
 }
 
 header h1 {
