@@ -64,9 +64,9 @@
                     <ul class="nav__list">
                         <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active"><i class='bx bx-home-alt-2'></i> Home</a></li>
                         <li class="nav__item"><a href="/navegar/formularioUm" class="nav__link"><i class='bx bx-calculator'></i> Calculadora</a></li>
-                        <li class="nav__item"><a href="/navegar/cadastrarProduto" class="nav__link"><i class='bx bx-cart-add'></i> Cadastrar Produto</a></li>
+                        
                         <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link"><i class='bx bx-user-circle'></i> Editar Perfil</a></li>
-                        <li class="nav__item"><a href="/sobre" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
+                        <li class="nav__item"><a href="/navegar/sobre" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
                         <li class="nav__item"><a href="/navegar/dicas" class="nav__link"><i class='bx bx-bulb'></i> Dicas</a></li>
                         <li class="nav__item"><a href="/navegar/ia" class="nav__link"><i class='bx bx-cloud'></i> IA</a></li>
                             {{-- Botão do Logout --}}

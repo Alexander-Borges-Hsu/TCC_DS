@@ -19,7 +19,7 @@ class EventController extends Controller
     // Modificado para aceitar Request e tratar a página de relatório
     public function navegar($page){
         $protectedLog = ['welcome'];
-        $protectedUnLog = ['editarPerfil', 'formularioUm', 'cadastrarProduto', 'ia'];
+        $protectedUnLog = ['editarPerfil', 'formularioUm', 'cadastrarProduto', 'ia', 'sobre'];
 
         if(in_array($page, $protectedLog) && Auth::check()){ 
             return redirect('/');

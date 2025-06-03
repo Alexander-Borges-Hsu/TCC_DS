@@ -119,8 +119,8 @@
                                     Notícias
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                            <li>    
+                                <a href="/navegar/sobre">
                                     Sobre Nós
                                 </a>
                             </li>

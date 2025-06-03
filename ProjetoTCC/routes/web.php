@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ia/perguntar', [IaController::class, 'ask'])->name('ia.perguntar');
 
     // Rota da página Sobre Nós
-    Route::get('/sobre', function() { return view('sobre'); })->name('sobre.index');
+   
 
     // Suas outras rotas autenticadas (se houver)
     // Exemplo: Rota para navegar (se precisar de auth)
