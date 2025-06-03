@@ -21,7 +21,7 @@ class IaController extends Controller
         ]);
 
         $userQuestion = $request->input("question");
-        $apiKey = env("OPENROUTER_API_KEY"); 
+        $apiKey = config("services.inteligencia_artificial.key"); 
 
         if (!$apiKey) {
             Log::error("Chave da API OpenRouter não configurada no .env (OPENROUTER_API_KEY)");
@@ -35,7 +35,7 @@ class IaController extends Controller
 
         try {
             $response = Http::withHeaders([
-                "Authorization" => "Bearer " . $apiKey, 
+                "Authorization" => "Bearer " . trim($apiKey), 
                 "Content-Type" => "application/json",
                 "HTTP-Referer" => env('APP_URL', 'Laravel App'), 
                 "X-Title" => env('APP_NAME', 'Laravel AI Integration'),

@@ -19,9 +19,6 @@ Route::post('/esqueci-senha', [SenhaController::class, 'enviarCodigo'])->name('s
 Route::get('/verificar-codigo', [SenhaController::class, 'formCodigo'])->name('senha.form.codigo');
 Route::post('/verificar-codigo', [SenhaController::class, 'verificarCodigo'])->name('senha.verificar.codigo');
 
-// Rotas que exigem autenticação
-Route::middleware(['auth'])->group(function () {
-
     // Rota de logout
     Route::post('/logout', function () {
         Auth::logout();
@@ -59,7 +56,6 @@ Route::middleware(['auth'])->group(function () {
     // Adicione aqui outras rotas que precisam de login, como editar perfil, etc.
     // Route::get('/editar-perfil', [ProfileController::class, 'edit'])->name('profile.edit');
 
-});
 
 // Nota: As rotas '/navegar/{id}' e '/events' do EventController foram deixadas de fora do grupo 'auth'. 
 // Se elas precisarem de autenticação, mova-as para dentro do Route::middleware(['auth'])->group(...).

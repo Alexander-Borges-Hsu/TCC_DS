@@ -13,6 +13,9 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'inteligencia_artificial' => [
+        'key' => env('OPENROUTER_API_KEY', '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')
+    ],
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),

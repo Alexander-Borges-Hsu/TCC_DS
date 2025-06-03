@@ -72,5 +72,7 @@
             });
         });
     });
+
+    console.log("{{ config('services.inteligencia_artificial.key') }}")
 </script>
 @endsection

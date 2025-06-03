@@ -5,6 +5,7 @@
   <h2>VerdeChat</h2>
 
   <form id="iaForm">
+    @csrf
     <label for="userPrompt">Faça qualquer pergunta sobre o tema ambiental</label>
     <textarea id="userPrompt" rows="4" required placeholder="Digite aqui sua dúvida sobre meio ambiente..."></textarea>
 
