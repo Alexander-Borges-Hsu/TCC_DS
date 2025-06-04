@@ -98,7 +98,7 @@
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h4>Davi</h4>
-                                <p>Desenvolvedor Full-stack</p>
+                                <p>Desenvolvedor Front-end</p>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h4>Diego</h4>

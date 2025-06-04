@@ -112,7 +112,7 @@
 
                 let cnpj = gerarDigitos();
                 let cnpjFormatado = formatarCNPJ(cnpj);
-                alert("CNPJ gerado: " + cnpjFormatado);
+                document.getElementById('cnpj').value = cnpjFormatado;
             }
         </script>
         @include('layouts.carregamento')
