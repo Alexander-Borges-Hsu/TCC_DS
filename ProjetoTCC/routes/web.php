@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EditarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SenhaController;
@@ -43,21 +44,6 @@ Route::post('/verificar-codigo', [SenhaController::class, 'verificarCodigo'])->n
     Route::get('/ia', function() { return view('ia'); })->name('ia.index');
     Route::post('/ia/perguntar', [IaController::class, 'ask'])->name('ia.perguntar');
 
-    // Rota da página Sobre Nós
-   
-
-    // Suas outras rotas autenticadas (se houver)
-    // Exemplo: Rota para navegar (se precisar de auth)
-    // Route::get('/navegar/{id}', [EventController::class, 'navegar']); 
-    
-    // Exemplo: Rota para salvar eventos (se precisar de auth)
-    // Route::post('/events', [EventController::class, 'store'])->name('events.store');
-
-    // Adicione aqui outras rotas que precisam de login, como editar perfil, etc.
-    // Route::get('/editar-perfil', [ProfileController::class, 'edit'])->name('profile.edit');
-
-
-// Nota: As rotas '/navegar/{id}' e '/events' do EventController foram deixadas de fora do grupo 'auth'. 
-// Se elas precisarem de autenticação, mova-as para dentro do Route::middleware(['auth'])->group(...).
-Route::get('/navegar/{id}', [EventController::class, 'navegar']);
-Route::post('/events', [EventController::class, 'store'])->name('events.store');
+    Route::get('/navegar/{id}', [EventController::class, 'navegar']);
+    Route::post('/events', [EventController::class, 'store'])->name('events.store');
+ Route::put('/editarPerfil', [EditarController::class, 'update'])->name('editar.perfil');

@@ -24,7 +24,10 @@
 
 <div class="container_editar">
   <h2>Editar Perfil</h2>
-  <form id="profileForm">
+  <form id="profileForm" action="{{ route('editar.perfil') }}" method="POST" enctype="multipart/form-data" >
+    @csrf
+    @method('PUT')
+
     <label for="profilePic">Foto de Perfil:</label>
     <input type="file" id="profilePic" accept="image/*">
 
@@ -33,7 +36,7 @@
     </div>
 
     <label for="userName">Nome do Usuário:</label>
-    <input type="text" id="userName" required>
+    <input type="text" id="userName" required value="{{ Auth::user()->nome }}">
 
     <label for="companyName">Nome da Empresa:</label>
     <input type="text" id="companyName" required>
@@ -48,15 +51,22 @@
       <input type="password" id="newPassword" required>
 
       <label for="confirmPassword">Repetir Nova Senha:</label>
-      <input type="password" id="confirmPassword" required>
-
-      <div id="passwordError" class="error"></div>
+      <input type="password" id="newPassword_confirmation" required>
+      @if (session('error'))
+      <div class="alert alert-danger">
+      {{session('error') }}
+      </div>
+      @endif
     </div>
-
+    <a href="/navegar/nova-senha">Esqueci minha senha</a>
     <button type="submit" class="btn-save">Salvar Alterações</button>
   </form>
 </div>
-
+@if (session('success'))
+  <script>
+    alert("{{ session('success') }}");
+  </script>
+@endif
 <script>
   const senhaAtualCadastrada = "senha123";
 
@@ -143,4 +153,5 @@
   });
 </script>
 
+@include('layouts.carregamento')
 @endsection
