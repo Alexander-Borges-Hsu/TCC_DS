@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -9,47 +10,43 @@ class EditarController extends Controller
 {
     public function update(Request $request)
     {
-    $user = Auth::user();
+        $user = Auth::user();
 
         // Validação
         $request->validate([
-            'profilePic' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'profilePic' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'userName' => 'required|string|max:100',
             'companyName' => 'required|string|max:100',
-            'currentPassword' => 'required_with:nova_senha|nullable|string',
+            'currentPassword' => 'required_with:newPassword|string',
             'newPassword' => 'nullable|string|min:6|confirmed',
         ]);
 
-        // Se houver upload de nova imagem
+        // Upload da nova imagem de perfil
         if ($request->hasFile('profilePic')) {
             $imagem = $request->file('profilePic');
-            $caminho = $imagem->store('perfil', 'public'); // 'perfil' = pasta em /storage/app/public/perfil
+            $nomeImagem = uniqid() . '.' . $imagem->getClientOriginalExtension();
+            $caminho = $imagem->storeAs('perfil', $nomeImagem, 'public');
             $user->foto_perfil = $caminho;
         }
-        // Atualização simples
+
+        // Atualiza nome e empresa
         $user->nome = $request->userName;
         $user->nome_empresa = $request->companyName;
 
-        // Se nova senha foi enviada
+        // Atualização da senha
         if ($request->filled('newPassword')) {
-            // Verifica senha atual
+            // Verifica se a senha atual está correta
             if (!Hash::check($request->currentPassword, $user->password)) {
-                return response()->json(['error' => 'Senha atual incorreta.'], 401);
+                return back()->with('error', 'Senha atual incorreta.');
             }
 
-            // Altera a senha
-            $user->password = Hash::make($request->nova_senha);
+            // Define nova senha
+            $user->password = Hash::make($request->newPassword);
         }
 
+        // Salva todas as alterações
         $user->save();
 
-        if(response()->json(['success' => 'Perfil atualizado com sucesso.'])) {
-            return redirect()->back()->with('success', 'Perfil atualizado com sucesso.');
-        }else{
-            return redirect()->back()->with('error', 'Senha atual incorreta.');    
-        }
-        
-        
-
+        return back()->with('success', 'Perfil atualizado com sucesso.');
     }
 }

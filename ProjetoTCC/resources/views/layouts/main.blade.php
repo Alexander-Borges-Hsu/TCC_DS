@@ -44,7 +44,7 @@
                     @if(Auth::user() != null)
                     <div class="nav__perfil">
                         <div class="nav__img">
-                            <img src="/imagens/perfil.png" alt="">
+                        <img src="{{ asset('storage/' . Auth::user()->foto_perfil) }}" class="foto-perfil">
                         </div>
                         <div>
                             <a href="/navegar/editarPerfil" class="nav__name">Olá, {{ Auth::user()->nome }}</a>

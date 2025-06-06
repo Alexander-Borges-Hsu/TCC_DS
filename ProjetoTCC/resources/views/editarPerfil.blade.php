@@ -29,31 +29,34 @@
     @method('PUT')
 
     <label for="profilePic">Foto de Perfil:</label>
-    <input type="file" id="profilePic" accept="image/*">
+    <input type="file" id="profilePic" accept="image/*" name="profilePic">
 
     <div class="avatar-container">
       <img id="preview" src="" alt="Prévia da imagem">
     </div>
 
     <label for="userName">Nome do Usuário:</label>
-    <input type="text" id="userName" required value="{{ Auth::user()->nome }}">
+    <input type="text" id="userName" required value="{{ Auth::user()->nome }}" name="userName">
 
     <label for="companyName">Nome da Empresa:</label>
-    <input type="text" id="companyName" required>
+    <input type="text" id="companyName" required name="companyName">
 
     <div class="section">
       <h3>Alterar Senha</h3>
 
       <label for="currentPassword">Senha Atual:</label>
-      <input type="password" id="currentPassword" required>
+      <input type="password" id="currentPassword" required name="currentPassword">
 
       <label for="newPassword">Nova Senha:</label>
-      <input type="password" id="newPassword" required>
+      <input type="password" id="newPassword" required name="newPassword">
 
-      <label for="confirmPassword">Repetir Nova Senha:</label>
-      <input type="password" id="newPassword_confirmation" required>
+      <label for="newPassword_confirmation">Repetir Nova Senha:</label>
+      <input type="password" id="newPassword_confirmation" required name="newPassword_confirmation">
+      <div id="errorDiv" style="color:red">
+
+      </div>
       @if (session('error'))
-      <div class="alert alert-danger">
+      <div class="alert alert-danger" id="errorDiv">
       {{session('error') }}
       </div>
       @endif
@@ -68,53 +71,40 @@
   </script>
 @endif
 <script>
-  const senhaAtualCadastrada = "senha123";
-
   document.getElementById("profileForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const current = document.getElementById("currentPassword").value;
-    const nova = document.getElementById("newPassword").value;
-    const repetir = document.getElementById("confirmPassword").value;
-    const errorDiv = document.getElementById("passwordError");
-
+    const errorDiv = document.getElementById("errorDiv");
     errorDiv.textContent = "";
 
-    if (nova.length < 6) {
+    const nova = document.getElementById("newPassword").value;
+    const repetir = document.getElementById("newPassword_confirmation").value;
+
+    if (nova.length > 0 && nova.length < 6) {
+      event.preventDefault();
       errorDiv.textContent = "A nova senha deve ter no mínimo 6 caracteres.";
       return;
     }
 
-    if (nova === current) {
-      errorDiv.textContent = "A nova senha não pode ser igual à senha atual.";
-      return;
-    }
-
-    if (current !== senhaAtualCadastrada) {
-      errorDiv.textContent = "A senha atual está incorreta.";
-      return;
-    }
-
     if (nova !== repetir) {
+      event.preventDefault();
       errorDiv.textContent = "As novas senhas não coincidem.";
       return;
     }
 
-    alert("Perfil atualizado com sucesso!");
+    // Deixe a verificação da senha atual para o back-end.
   });
 
+  // Visualização da imagem de perfil
   const fileInput = document.getElementById("profilePic");
   const previewImg = document.getElementById("preview");
 
   fileInput.addEventListener("change", function () {
     const file = this.files[0];
-
     if (!file) return;
 
     const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
     if (!validTypes.includes(file.type)) {
       alert("Apenas arquivos de imagem são permitidos (.jpg, .jpeg, .png, .webp).");
-      this.value = ""; 
+      this.value = "";
       return;
     }
 
@@ -138,7 +128,7 @@
 
         const aspectRatio = img.width / img.height;
         if (aspectRatio < 0.8 || aspectRatio > 1.25) {
-          alert("A imagem deve ser menor para ser usada como foto de perfil.");
+          alert("A imagem deve estar proporcionalmente correta (quase quadrada).");
           fileInput.value = "";
           previewImg.style.display = "none";
           return;
