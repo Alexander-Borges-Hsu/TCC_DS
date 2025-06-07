@@ -40,6 +40,9 @@
     <header class="header-form">
         <h1><span class="verde">Verde</span><span class="calc">Calc</span></h1>
         <nav>
+            
+        
+                <div>
             <ul>
                 <li><a href="/navegar/telaInicial">Home</a></li>
                 <li><a href="/navegar/formularioUm">Registre sua empresa</a></li>
@@ -50,8 +53,10 @@
             </ul>
         </nav>
         @if(Auth::user() != null)   
-        <div class="usuario">
-            <div class="icon"></div>
+        <div class="nav__perfil">
+                <div class="nav__img">
+                <img src="{{ asset('storage/' . Auth::user()->foto_perfil) }}" class="foto-perfil">
+                </div>
             <span>Olá, {{Auth::user()->nome}}</span>
         </div>
         @else

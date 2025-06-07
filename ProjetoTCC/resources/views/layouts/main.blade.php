@@ -53,7 +53,7 @@
                     @else
                     <div class="nav__perfil">
                         <div class="nav__img">
-                            <img src="/imagens/perfil.png" alt="">
+                            <img src="/imagens/perfil.pg" alt="">
                         </div>
                         <div>
                             <a href="/navegar/welcome" class="nav__name">Entre ou cadastre-se</a>
