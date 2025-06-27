@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Navbar VerdeCalc</title>
+    <link rel="stylesheet" href="/css/styleFooter.css">
+    <link rel="stylesheet" href="/css/styleTelaInicial.css">
+    <link rel="stylesheet" href="/css/styleAside.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/relatorio-impressao.css">
+    <link rel="stylesheet" href="/css/relatorio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+</head>
+<body>
+    <header class="header">
+        <ion-icon name="menu-outline" class="header__toggle" id="nav-toggle"></ion-icon>
+        <nav class="nav" id="nav-menu">
+            <div class="nav__content bd-grid">
+                <ion-icon name="close-outline" class="nav__close" id="nav-close"></ion-icon>
+                <div class="nav__perfil">
+                    <div class="nav__img">
+                        <img src="/imagens/perfil.png" alt="">
+                    </div>
+                    <div>
+                        <a href="#" class="nav__name">Usuário Teste</a>
+                    </div>
+                </div>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#" class="nav__link active"><i class='bx bx-home-alt-2'></i> Home</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bx-calculator'></i> Calculadora</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bx-user-circle'></i> Editar Perfil</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bx-bulb'></i> Dicas</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link"><i class='bx bx-cloud'></i> IA</a></li>
+                    </ul>
+                </div>    
+            </div>
+        </nav>
+    </header>
+
+    <div class="area-conteudo-relatorio">
+        <div class="container mx-auto px-4 py-8">
+            <h1 class="titulo-pagina fade-in">Teste do Navbar Responsivo</h1>
+            <p>Esta página é para testar se o navbar responsivo está funcionando corretamente em dispositivos móveis.</p>
+            <p>Clique no ícone hamburguer (três barras) no canto superior esquerdo para abrir o menu.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="/js/script_aside.js"></script>
+</body>
+</html>
+

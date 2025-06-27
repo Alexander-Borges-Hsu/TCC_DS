@@ -89,7 +89,7 @@
 
         {{-- Scripts Globais --}}
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-        <script src="{{ asset("assets/js/main.js") }}"></script> 
+        <script src="{{ asset("js/script_aside.js") }}"></script> 
         @stack("scripts") {{-- Adicionado para scripts específicos da página --}}
         @include('layouts.carregamento') {{-- Tela de carregamento --}}
 

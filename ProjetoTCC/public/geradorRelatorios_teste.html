@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerdeCalc - Gerador de Relatórios</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="/imagens/icon-512x512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="/imagens/imagem.png">
+    <link rel="stylesheet" href="/css/styleFooter.css">
+    <link rel="stylesheet" href="/css/styleTelaInicial.css">
+    <link rel="stylesheet" href="/css/styleAside.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/relatorio-impressao.css">
+    <link rel="stylesheet" href="/css/relatorio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+</head>
+<body>
+    <header class="header">
+        <ion-icon name="menu-outline" class="header__toggle" id="nav-toggle"></ion-icon>
+        <nav class="nav" id="nav-menu">
+            <div class="nav__content bd-grid">
+                <ion-icon name="close-outline" class="nav__close" id="nav-close"></ion-icon>
+                <div class="nav__perfil">
+                    <div class="nav__img">
+                        <img src="/imagens/perfil.png" alt="">
+                    </div>
+                    <div>
+                        <a href="/navegar/editarPerfil" class="nav__name">Olá, Usuário Teste</a>
+                    </div>
+                </div>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="/navegar/telaInicial" class="nav__link active"><i class='bx bx-home-alt-2'></i> Home</a></li>
+                        <li class="nav__item"><a href="/navegar/formularioUm" class="nav__link"><i class='bx bx-calculator'></i> Calculadora</a></li>
+                        <li class="nav__item"><a href="/navegar/editarPerfil" class="nav__link"><i class='bx bx-user-circle'></i> Editar Perfil</a></li>
+                        <li class="nav__item"><a href="/navegar/sobre" class="nav__link"><i class='bx bxs-user-detail'></i> Sobre Nós</a></li>
+                        <li class="nav__item"><a href="/navegar/dicas" class="nav__link"><i class='bx bx-bulb'></i> Dicas</a></li>
+                        <li class="nav__item"><a href="/navegar/ia" class="nav__link"><i class='bx bx-cloud'></i> IA</a></li>
+                        <li class="nav__item">
+                            <form action="/logout" method="POST" style="margin: 0; padding: 0;">
+                                <button type="submit" class="nav__link" style="background: none; border: none; cursor: pointer; padding: 0; color: inherit;">
+                                    <i class='bx bx-log-out' style="font-size: 1.3rem; margin-top: 2px;"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>    
+            </div>
+        </nav>
+    </header>
+
+    <div class="area-conteudo-relatorio">
+        <div class="container mx-auto px-4 py-8">
+            <h1 class="titulo-pagina fade-in">Relatório de Desempenho Ambiental</h1>
+
+            <!-- Status e Resumo -->
+            <div class="max-w-5xl mx-auto mb-6 slide-in-up" style="animation-delay: 0.1s">
+                <div class="status-card" style="border-left-color: #ef4444;">
+                    <div class="status-icon" style="color: #ef4444;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="status-title" style="color: #ef4444;">
+                        Atenção: Meta Excedida
+                    </div>
+                    <div class="status-description">
+                        Sua empresa ultrapassou a meta de emissão de CO₂ estabelecida.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container para os Cartões de Resumo -->
+            <div class="max-w-5xl mx-auto">
+                <div class="grid-container mb-6">
+                    <div class="grid-item cartao-relatorio text-center danger slide-in-left" style="animation-delay: 0.2s">
+                        <div class="content-aligned">
+                            <h3 class="text-lg font-semibold mb-2">CO₂ Consumido Total</h3>
+                            <p class="texto-valor-principal">1,250 <span style="font-size: 0.6em;">kg</span></p>
+                        </div>
+                    </div>
+                    <div class="grid-item cartao-relatorio text-center primary slide-in-left" style="animation-delay: 0.3s">
+                        <div class="content-aligned">
+                            <h3 class="text-lg font-semibold mb-2">Meta de CO₂</h3>
+                            <p class="texto-valor-secundario">1,000 <span style="font-size: 0.6em;">kg</span></p>
+                        </div>
+                    </div>
+                    <div class="grid-item cartao-relatorio text-center warning slide-in-left" style="animation-delay: 0.4s">
+                        <div class="content-aligned">
+                            <h3 class="text-lg font-semibold mb-2">Percentual da Meta</h3>
+                            <p class="texto-valor-terciario">125.00<span style="font-size: 0.6em;">%</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data da Análise -->
+            <div class="max-w-5xl mx-auto mb-6">
+                <div class="cartao-relatorio primary slide-in-up" style="animation-delay: 0.5s">
+                    <div class="flex items-center">
+                        <div class="mr-4" style="color: var(--color-primary);">
+                            <i class="fas fa-calendar-alt fa-2x"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Data da Análise</h3>
+                            <p class="text-2xl font-bold">27/06/2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teste do Navbar -->
+            <div class="max-w-5xl mx-auto cartao-relatorio mb-6 secondary slide-in-up" style="animation-delay: 0.6s">
+                <h2 class="titulo-cartao-relatorio">
+                    <i class="fas fa-mobile-alt"></i>
+                    Teste do Navbar Responsivo
+                </h2>
+                <div class="p-4 bg-blue-50 rounded-lg mb-4">
+                    <p class="text-gray-700">
+                        <strong>📱 INSTRUÇÕES PARA TESTE:</strong><br>
+                        1. Reduza a largura da tela ou use um dispositivo móvel<br>
+                        2. Procure pelo ícone hamburguer (três barras) no canto superior esquerdo<br>
+                        3. Clique no ícone para abrir o menu lateral<br>
+                        4. Clique no X para fechar o menu<br>
+                        5. Verifique se as transições são suaves
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                            <h3 class="font-semibold">Status do Navbar</h3>
+                        </div>
+                        <p class="text-gray-700">Corrigido e funcional em dispositivos móveis</p>
+                    </div>
+                    
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-code mr-2 text-blue-500"></i>
+                            <h3 class="font-semibold">Arquivo Corrigido</h3>
+                        </div>
+                        <p class="text-gray-700">/public/css/styleAside.css</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="/js/script_aside.js"></script>
+
+    <script>
+        // Dados simulados para o gráfico
+        window.dadosGrafico = {
+            percentualMeta: 125.00,
+            statusCor: "#ef4444"
+        };
+    </script>
+</body>
+</html>
+
