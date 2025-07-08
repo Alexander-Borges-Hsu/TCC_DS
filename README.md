@@ -22,3 +22,4 @@ Repositório para o Desenvolvimento do TCC - Técnico em Desenvolvimento de Sist
  - Composer
  - Bootstrap
  - Git e Github
+ - Máquinas virtuais da Azure - Linux
